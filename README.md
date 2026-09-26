@@ -7,8 +7,8 @@ can link straight to it:
 
 | Project                                 | Link for the résumé                                |
 |-----------------------------------------|----------------------------------------------------|
-| Security Agent (Aiscopy Labs)           | `https://micheledamian.github.io/#security-agent`  |
-| Tennis Robot Vision (Waltair Robotics)  | `https://micheledamian.github.io/#tennis-robot`    |
+| Security Agent                          | `https://micheledamian.github.io/#security-agent`  |
+| Tennis Robot Vision                     | `https://micheledamian.github.io/#tennis-robot`    |
 
 Once résumés with these links are out, don't rename the `id`s, or old links will stop
 jumping to the project.
@@ -55,14 +55,16 @@ outline, so any you miss are obvious on the page.
   screen and hides over the opening screen. It is built automatically by `main.js` from
   every `<article class="project">`, using its `data-short` attribute as the label.
 
-## Block map (Security Agent)
+## House map (Security Agent)
 
-The street map in "It follows a car around the block" is an inline SVG, not a Google Maps
-embed, so it needs no API key, sets no cookies and shows no real address. `main.js` drives
-the car along `#map-route` and lights up a camera's view while the car is inside it, using
-each `.map__fov`'s `data-x`, `data-y`, `data-dir`, `data-half` and `data-range`. If you move
-a camera, update its wedge path, those attributes and the solid `.map__seen` segments together.
-With reduced motion (or no JavaScript) the map shows a still frame: camera 2 sees the car.
+The street map in "Three cameras. One car, not three." is an inline SVG, not a Google Maps
+embed, so it needs no API key, sets no cookies and shows no real address. It shows a corner
+house with a camera on the driveway, the side gate and the back gate; the views don't overlap
+and stop at the street. `main.js` drives the car along `#map-route` and lights up a camera's
+view while the car is inside it, using each `.map__fov`'s `data-x`, `data-y`, `data-dir`,
+`data-half` and `data-range`. If you move a camera, update its wedge path, those attributes
+and the solid `.map__seen` segments together. With reduced motion (or no JavaScript) the map
+shows a still frame: camera 2 sees the car at the back gate.
 
 ## Tracking per application
 
@@ -90,7 +92,7 @@ records these events: `github-click`, and `security-agent-video-play` / `tennis-
 ```
 index.html            the page
 assets/css/style.css  all styles
-assets/js/main.js     project rail, active-link highlighting, video-play tracking, block-map animation
+assets/js/main.js     project rail, active-link highlighting, video-play tracking, house-map animation
 assets/img/           favicon, link-preview image (og-image.png, 1200x630)
 .nojekyll             tells GitHub Pages to serve files as-is
 ```

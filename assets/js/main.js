@@ -17,10 +17,11 @@
   });
 
   // ---------------------------------------------------------------
-  // Block map: drive the car round the block, lighting up each camera's
+  // House map: drive the car round the house, lighting up each camera's
   // view while the car is inside it. The tracking box and tag show only
   // while some camera sees it. Runs only while the map is on screen; with
-  // reduced motion the map keeps its static frame (camera 2 sees the car).
+  // reduced motion the map keeps its static frame (camera 2 sees the car
+  // at the back gate).
   // ---------------------------------------------------------------
   const map = document.querySelector("svg.map");
   const route = map && map.querySelector("#map-route");
@@ -45,7 +46,7 @@
     };
 
     const SIZE = 600, BOX = 17, TAG_W = 92, TAG_H = 24;   // match the markup
-    const SPEED = 120;                                   // map units per second
+    const SPEED = 95;                                    // map units per second
     const PAUSE = 1.2;                                   // seconds off the map between laps
     const total = route.getTotalLength();
     const lap = total / SPEED + PAUSE;
@@ -94,7 +95,8 @@
   // Project rail (scrollspy)
   // Built from every <article class="project" id="..." data-short="...">,
   // so a new project shows up in the rail with no extra markup.
-  // Each project gets a bar that fills as you read through it; the
+  // Each project gets a bar that fills as you read through it (in the rail,
+  // and under its link in the top nav, so it shows at every width); the
   // project under the reading line is highlighted in the rail and the nav.
   // ---------------------------------------------------------------
   const projects = [...document.querySelectorAll("article.project[id]")];
@@ -148,6 +150,7 @@
       const r = item.project.getBoundingClientRect();
       const progress = Math.min(1, Math.max(0, (line - r.top) / r.height));
       item.fill.style.transform = `scaleY(${progress})`;
+      if (item.nav) item.nav.style.setProperty("--progress", progress);
       if (r.top <= line && r.bottom > line) active = item;
     }
 

@@ -121,8 +121,24 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav__links a {
+  position: relative;
+  display: inline-block;
+  line-height: var(--nav-h);
   color: var(--muted);
   transition: color 0.2s;
+}
+
+/* reading progress through each project, on the nav's bottom edge */
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--signal);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
 }
 .nav__links a:hover,
 .nav__links a.is-active { color: var(--ink); }
@@ -157,7 +173,7 @@ h3 {
 
 
 /* ==========================================================
-   Hero: a short index of the projects
+   Hero: the name, then an index of the projects
    ========================================================== */
 .hero {
   display: flex;
@@ -167,14 +183,46 @@ h3 {
   padding: clamp(4.5rem, 12vh, 7.5rem) var(--gutter) clamp(4rem, 10vh, 6rem);
 }
 
-.hero__title {
-  font-size: clamp(2.5rem, 6.4vw, 5rem);
+/* The name comes into focus like a lens hunting for it, then a short
+   bar draws underneath once focus locks. */
+.hero__name {
+  position: relative;
+  font-size: clamp(2.5rem, 10vw, 8.25rem);
   font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -0.035em;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+  padding-bottom: 0.22em;
+  animation: focus-hunt 1.5s cubic-bezier(0.3, 0.6, 0.2, 1) 0.2s both;
 }
 
-/* Project index under the title */
+.hero__name::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 1.1em;
+  height: 4px;
+  margin-left: -0.55em;
+  border-radius: 2px;
+  background: var(--signal);
+  transform: scaleX(0);
+  animation: focus-lock 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) 1.65s both;
+}
+
+@keyframes focus-hunt {
+  0%   { opacity: 0;   filter: blur(18px); transform: scale(1.06); }
+  30%  { opacity: 1;   filter: blur(3px);  transform: scale(0.99); }
+  52%  {               filter: blur(8px);  transform: scale(1.015); }
+  74%  {               filter: blur(1.5px); transform: scale(0.998); }
+  100% { opacity: 1;   filter: blur(0);    transform: none; }
+}
+
+@keyframes focus-lock {
+  to { transform: scaleX(1); }
+}
+
+/* Project index under the name */
 .index {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -198,14 +246,6 @@ h3 {
   color: var(--signal);
   font-size: 0.95rem;
   font-weight: 700;
-}
-
-.index__meta {
-  display: block;
-  margin-top: 8px;
-  color: var(--dim);
-  font-size: 0.8125rem;
-  font-weight: 600;
 }
 
 .index__title {
@@ -304,13 +344,6 @@ h3 {
   letter-spacing: -0.01em;
 }
 
-.project__meta {
-  margin-top: 4px;
-  color: var(--dim);
-  font-weight: 600;
-  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
-}
-
 /* ---------- Film ---------- */
 .film {
   margin-top: clamp(3rem, 7vw, 5rem);
@@ -318,7 +351,7 @@ h3 {
 
 .film__frame {
   position: relative;
-  aspect-ratio: 16 / 9;          /* reserves space so #aiscopy lands in the right place */
+  aspect-ratio: 16 / 9;          /* reserves space so anchor links land in the right place */
   border-radius: 20px;
   overflow: hidden;
   background: var(--surface);
@@ -589,16 +622,23 @@ h3 {
 .pill rect { fill: var(--black); stroke: var(--signal); stroke-width: 1.5; }
 .pill text { fill: var(--ink); font-size: 18px; font-weight: 600; }
 
-/* ---------- Block map (street map in a dark map style) ---------- */
-.map__land { fill: #19191b; }
-.map__road rect { fill: #2e2e32; }
-.map__bldg rect,
-.map__bldg path { fill: #232326; stroke: #2c2c30; stroke-width: 1; }
-.map__lot { fill: #1e1e21; }
-.map__stall { fill: none; stroke: #2b2b2f; stroke-width: 1.5; }
-.map__park { fill: #15231a; }
+/* ---------- House map (street map in a dark map style) ---------- */
+.map__lawn { fill: #161d18; }
+.map__walk rect { fill: #242427; }
+.map__road rect { fill: #313135; }
+.map__drive, .map__drive rect { fill: #29292c; }
+.map__house, .map__house rect { fill: #26262a; stroke: #313136; stroke-width: 1; }
+.map__house--home { fill: #2e2e33; stroke: #45454b; stroke-width: 1.5; }
+.map__fence { fill: none; stroke: #4a4a50; stroke-width: 2; }
+.map__gate { fill: none; stroke: #8e8e93; stroke-width: 2; stroke-dasharray: 3 3; }
 .map__tree circle { fill: #1c3324; }
-.map__park-name { fill: #5b8a67; font-size: 13px; font-weight: 600; }
+.map__place text {
+  fill: #a1a1a6;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
 .map__street text {
   fill: #86868b;
   font-size: 14px;

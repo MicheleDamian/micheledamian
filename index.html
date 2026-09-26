@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Selected projects, Michele Damian</title>
+  <title>Michele Damian</title>
   <meta name="description" content="Computer vision and machine learning projects: a camera system that recognizes people and vehicles across cameras, and a single-camera tracker that calls a tennis ball’s bounce before it lands.">
 
   <!-- TODO: if you use a custom domain, replace https://micheledamian.github.io/ everywhere in this block -->
   <link rel="canonical" href="https://micheledamian.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Michele Damian">
-  <meta property="og:title" content="Selected projects, Michele Damian">
+  <meta property="og:title" content="Michele Damian">
   <meta property="og:description" content="Edge perception, cross-camera re-identification and AI reasoning systems. Selected work, with results.">
   <meta property="og:url" content="https://micheledamian.github.io/">
   <meta property="og:image" content="https://micheledamian.github.io/assets/img/og-image.png">
@@ -57,21 +57,19 @@
     <!-- Hero                                                          -->
     <!-- ============================================================ -->
     <section class="hero" id="top">
-      <h1 class="hero__title">Selected projects</h1>
+      <h1 class="hero__name">Michele Damian</h1>
 
       <ul class="index">
         <li>
           <a href="#security-agent">
             <span class="index__name">Security Agent</span>
             <span class="index__title">Cameras that remember who they’ve seen</span>
-            <span class="index__meta">Aiscopy Labs</span>
           </a>
         </li>
         <li>
           <a href="#tennis-robot">
             <span class="index__name">Tennis Robot Vision</span>
             <span class="index__title">Knowing where the ball will bounce, before it does</span>
-            <span class="index__meta">Waltair Robotics</span>
           </a>
         </li>
       </ul>
@@ -80,15 +78,14 @@
     <div id="work">
 
       <!-- ============================================================ -->
-      <!-- Project: Security Agent (Aiscopy Labs)                        -->
+      <!-- Project: Security Agent                                      -->
       <!-- Resume link: https://micheledamian.github.io/#security-agent  -->
       <!-- ============================================================ -->
-      <article class="project" id="security-agent" data-short="Security Agent" aria-labelledby="aiscopy-title">
+      <article class="project" id="security-agent" data-short="Security Agent" aria-labelledby="sa-title">
 
         <header class="section-head">
           <p class="project__name">Security Agent</p>
-          <p class="project__meta">Aiscopy Labs</p>
-          <h2 id="aiscopy-title">Cameras that remember who they’ve seen.</h2>
+          <h2 id="sa-title">Cameras that remember who they’ve seen.</h2>
           <p class="lede">
             A security camera system that spots people and vehicles on a tiny edge computer,
             recognizes them across cameras and across days, and answers questions about them
@@ -149,8 +146,8 @@
         </figure>
 
         <!-- Results -->
-        <section class="results" aria-labelledby="aiscopy-results">
-          <h3 id="aiscopy-results" class="block-title">The results</h3>
+        <section class="results" aria-labelledby="sa-results">
+          <h3 id="sa-results" class="block-title">The results</h3>
           <ul class="stats">
             <li class="stat">
               <p class="stat__value">2&nbsp;fps</p>
@@ -183,8 +180,8 @@
         </section>
 
         <!-- How it works -->
-        <section class="flow" aria-labelledby="aiscopy-flow">
-          <h3 id="aiscopy-flow" class="block-title">Three parts, one system</h3>
+        <section class="flow" aria-labelledby="sa-flow">
+          <h3 id="sa-flow" class="block-title">Three parts, one system</h3>
           <ol class="flow__steps">
             <li class="flow__step">
               <span class="flow__icon" aria-hidden="true">
@@ -335,90 +332,85 @@
         <!-- Feature: one vehicle across cameras that don't overlap -->
         <section class="feature" aria-labelledby="f-map">
           <div class="feature__text">
-            <h3 id="f-map">It follows a car around the block.</h3>
+            <h3 id="f-map">Three cameras. One car, not three.</h3>
             <p>
-              Four cameras, each facing a different street, and no two of them overlap. Between their
-              views are blind stretches where the car can’t be seen at all.
+              A family house on a corner, with a camera on each way in: the driveway, the side gate,
+              the back gate. Each one watches the house’s own ground, and none of their views overlap.
             </p>
             <p>
-              Each time it comes back into view, its appearance signature matches it to the track it
-              already has. Four sightings, one car, one route.
+              When the same car turns up at the back gate, then the side gate, then the driveway,
+              its appearance signature ties the sightings together. You get one car and where it went,
+              not three unrelated alerts.
             </p>
           </div>
           <figure class="feature__visual">
             <svg class="scene map is-seen" viewBox="0 0 600 600" role="img" aria-labelledby="map-desc">
-              <title id="map-desc">Street map of one city block with four numbered cameras, each facing a different street, with no overlap between their views. A car drives once around the block and each camera picks it up in turn, always as car ID 12.</title>
+              <title id="map-desc">Map of a corner house bordered by three streets, with a neighbour's house on the fourth side. Three numbered cameras on the house watch the driveway, the side gate and the back gate; their views don't overlap and stop at the street. A car drives past the back gate, the side gate and the driveway, and each camera picks it up in turn as car ID 12.</title>
               <defs><clipPath id="map-clip"><rect width="600" height="600" rx="18"/></clipPath></defs>
               <g clip-path="url(#map-clip)">
-                <rect class="map__land" width="600" height="600"/>
-                <!-- streets -->
-                <g class="map__road">
-                  <rect x="0" y="64" width="600" height="52"/><rect x="0" y="484" width="600" height="52"/>
-                  <rect x="64" y="0" width="52" height="600"/><rect x="484" y="0" width="52" height="600"/>
+                <rect class="map__lawn" width="600" height="600"/>
+                <!-- streets and pavements -->
+                <g class="map__walk"><rect x="0" y="104" width="600" height="57"/><rect x="0" y="439" width="600" height="57"/><rect x="54" y="0" width="57" height="600"/></g>
+                <g class="map__road"><rect x="0" y="110" width="600" height="45"/><rect x="0" y="445" width="600" height="45"/><rect x="60" y="0" width="45" height="600"/></g>
+                <!-- houses across the street -->
+                <g class="map__house">
+                  <rect x="150" y="22" width="92" height="62"/><rect x="300" y="14" width="80" height="70"/><rect x="440" y="24" width="104" height="58"/>
+                  <rect x="0" y="196" width="36" height="80"/><rect x="0" y="330" width="36" height="72"/>
+                  <rect x="150" y="514" width="86" height="64"/><rect x="298" y="520" width="96" height="60"/><rect x="452" y="512" width="80" height="66"/>
                 </g>
-                <!-- neighbouring blocks -->
-                <rect class="map__park" x="116" y="536" width="368" height="64"/>
-                <g class="map__tree"><circle cx="138" cy="560" r="9"/><circle cx="170" cy="578" r="11"/><circle cx="214" cy="556" r="8"/><circle cx="402" cy="560" r="10"/><circle cx="436" cy="580" r="9"/><circle cx="468" cy="556" r="8"/></g>
-                <text class="map__park-name" x="232" y="573" text-anchor="middle">Alder Park</text>
-                <g class="map__bldg">
-                  <rect x="0" y="0" width="54" height="54"/><rect x="546" y="0" width="54" height="54"/><rect x="0" y="546" width="54" height="54"/><rect x="546" y="546" width="54" height="54"/>
-                  <rect x="126" y="0" width="92" height="54"/><rect x="228" y="0" width="104" height="54"/><rect x="342" y="0" width="132" height="54"/>
-                  <rect x="0" y="126" width="54" height="120"/><rect x="0" y="256" width="54" height="94"/><rect x="0" y="360" width="54" height="114"/>
-                  <rect x="546" y="126" width="54" height="84"/><rect x="546" y="220" width="54" height="140"/><rect x="546" y="370" width="54" height="104"/>
+                <g class="map__drive"><rect x="252" y="84" width="26" height="20"/><rect x="394" y="84" width="26" height="20"/><rect x="200" y="496" width="24" height="18"/><rect x="408" y="496" width="24" height="18"/></g>
+                <!-- the neighbour -->
+                <path class="map__fence" d="M330 161V439"/>
+                <rect class="map__drive" x="512" y="161" width="34" height="62"/>
+                <path class="map__house" d="M392 208H512V250H476V318H392Z"/>
+                <!-- the family house: driveway, garage, house, fence with a side gate and a back gate -->
+                <rect class="map__drive" x="274" y="161" width="38" height="52"/>
+                <path class="map__drive" d="M196 161H206V213H196Z"/>
+                <path class="map__fence" d="M111 161V256M111 280V439H200M224 439H330"/>
+                <path class="map__gate" d="M111 256V280M200 439H224"/>
+                <path class="map__house map__house--home" d="M168 213H316V268H262V327H168Z"/>
+                <g class="map__tree"><circle cx="140" cy="190" r="12"/><circle cx="300" cy="390" r="16"/><circle cx="262" cy="410" r="11"/><circle cx="140" cy="420" r="12"/><circle cx="560" cy="380" r="18"/><circle cx="430" cy="410" r="14"/><circle cx="372" cy="190" r="11"/><circle cx="28" cy="40" r="14"/><circle cx="560" cy="560" r="15"/><circle cx="420" cy="50" r="10"/></g>
+                <g class="map__place">
+                  <text x="293" y="190">Driveway</text>
+                  <text x="212" y="430">Back gate</text>
+                  <text transform="translate(124 268) rotate(-90)">Side gate</text>
                 </g>
-                <!-- the block -->
-                <g class="map__bldg">
-                  <path d="M128 128H300V210H212V300H128Z"/>
-                  <path d="M312 128H472V238H382V192H312Z"/>
-                  <rect x="398" y="252" width="74" height="120"/>
-                  <rect x="338" y="386" width="134" height="86"/>
-                  <rect x="208" y="398" width="98" height="74"/>
-                  <rect x="128" y="312" width="68" height="160"/>
-                </g>
-                <rect class="map__lot" x="226" y="224" width="158" height="150" rx="4"/>
-                <path class="map__lot" d="M306 374H338V484H306Z"/>
-                <path class="map__stall" d="M246 224v34M246 340v34M266 224v34M266 340v34M286 224v34M286 340v34M306 224v34M306 340v34M326 224v34M326 340v34M346 224v34M346 340v34M366 224v34M366 340v34"/>
-                <!-- street names -->
                 <g class="map__street">
-                  <text x="400" y="90">Linden St</text>
-                  <text transform="translate(510 390) rotate(90)">Harbor Ave</text>
-                  <text x="200" y="510">Mercer St</text>
-                  <text transform="translate(90 210) rotate(-90)">Orchard Ave</text>
+                  <text x="470" y="132.5">Maple St</text>
+                  <text x="470" y="467.5">Cedar St</text>
+                  <text transform="translate(82.5 400) rotate(-90)">Birch Ave</text>
                 </g>
-                <!-- camera views: none of them overlap -->
-                <path class="map__fov" d="M134 130L243.3 -0.2A170 170 0 0 1 304.0 130.0Z" data-cam="1" data-x="134" data-y="130" data-dir="-25" data-half="25" data-range="170"/>
-                <path class="map__fov is-active" d="M470 134L602.6 223.5A160 160 0 0 1 475.6 293.9Z" data-cam="2" data-x="470" data-y="134" data-dir="61" data-half="27" data-range="160"/>
-                <path class="map__fov" d="M466 470L353.5 604.1A175 175 0 0 1 291.0 470.0Z" data-cam="3" data-x="466" data-y="470" data-dir="155" data-half="25" data-range="175"/>
-                <path class="map__fov" d="M130 466L3.6 359.9A165 165 0 0 1 130.0 301.0Z" data-cam="4" data-x="130" data-y="466" data-dir="-115" data-half="25" data-range="165"/>
+                <!-- camera views: none overlap, and none reach past the street -->
+                <path class="map__fov" d="M292 213L236.1 130.1A100 100 0 0 1 347.9 130.1Z" data-cam="1" data-x="292" data-y="213" data-dir="-90" data-half="34" data-range="100"/>
+                <path class="map__fov is-active" d="M212 327L287.0 456.9A150 150 0 0 1 137.0 456.9Z" data-cam="2" data-x="212" data-y="327" data-dir="90" data-half="30" data-range="150"/>
+                <path class="map__fov" d="M168 268L84.5 333.3A106 106 0 0 1 84.5 202.7Z" data-cam="3" data-x="168" data-y="268" data-dir="180" data-half="38" data-range="106"/>
                 <!-- the car's route: dashed where no camera sees it, solid where one does -->
-                <path class="map__route" id="map-route" d="M-20 102H476A22 22 0 0 1 498 124V476A22 22 0 0 1 476 498H124A22 22 0 0 1 102 476V-20"/>
-                <path class="map__seen" d="M158 102L302 102M498 153L498 292M442 498L294 498M102 442L102 304"/>
-                <g class="map__cam" data-cam="1" transform="translate(134 130)"><circle r="11"/><text y="4.5" text-anchor="middle">1</text></g>
-                <g class="map__cam is-active" data-cam="2" transform="translate(470 134)"><circle r="11"/><text y="4.5" text-anchor="middle">2</text></g>
-                <g class="map__cam" data-cam="3" transform="translate(466 470)"><circle r="11"/><text y="4.5" text-anchor="middle">3</text></g>
-                <g class="map__cam" data-cam="4" transform="translate(130 466)"><circle r="11"/><text y="4.5" text-anchor="middle">4</text></g>
-                <!-- the car (shown where camera 2 sees it; main.js drives it round the block) -->
-                <g class="map__car" transform="translate(498 222)">
-                  <g class="map__car-body" transform="rotate(90)">
+                <path class="map__route" id="map-route" d="M620 456H106A12 12 0 0 1 94 444V156A12 12 0 0 1 106 144H620"/>
+                <path class="map__seen" d="M286 456L138 456M94 326L94 210M246 144L338 144"/>
+                <g class="map__cam" data-cam="1" transform="translate(292 213)"><circle r="11"/><text y="4.5" text-anchor="middle">1</text></g>
+                <g class="map__cam is-active" data-cam="2" transform="translate(212 327)"><circle r="11"/><text y="4.5" text-anchor="middle">2</text></g>
+                <g class="map__cam" data-cam="3" transform="translate(168 268)"><circle r="11"/><text y="4.5" text-anchor="middle">3</text></g>
+                <!-- the car (shown at the back gate, where camera 2 sees it; main.js drives it round the house) -->
+                <g class="map__car" transform="translate(212 456)">
+                  <g class="map__car-body" transform="rotate(180)">
                     <rect x="-12.5" y="-6.5" width="25" height="13" rx="3.5"/>
                     <path class="map__car-glass" d="M3.5 -5h4v10h-4zM-10 -4.5h3v9h-3z"/>
                   </g>
                   <rect class="box box--live map__spot" x="-17" y="-17" width="34" height="34"/>
                 </g>
-                <g class="tag tag--live map__spot map__tag" transform="translate(481 181)">
+                <g class="tag tag--live map__spot map__tag" transform="translate(195 415)">
                   <rect width="92" height="24" rx="2"/>
                   <text x="8" y="17">car ID:12</text>
                 </g>
-                <!-- scale -->
-                <g class="map__scale" transform="translate(448 566)">
-                  <rect width="140" height="24" rx="4"/>
+                <g class="map__scale" transform="translate(428 566)">
+                  <rect width="160" height="24" rx="4"/>
                   <text x="10" y="16.5">20 m</text>
-                  <path d="M48 8v8h82V8"/>
+                  <path d="M48 8v8h100V8"/>
                 </g>
               </g>
               <rect class="map__edge" x="0.75" y="0.75" width="598.5" height="598.5" rx="17.25"/>
             </svg>
-            <figcaption>Solid where a camera sees the car, dashed where none does. It stays ID:12 all the way round.</figcaption>
+            <figcaption>Solid where a camera sees the car, dashed where none does. Same car, ID:12, at every gate.</figcaption>
           </figure>
         </section>
 
@@ -480,8 +472,8 @@
         </section>
 
         <!-- Stack -->
-        <section class="stack" aria-labelledby="aiscopy-stack">
-          <h3 id="aiscopy-stack" class="block-title block-title--small">Built with</h3>
+        <section class="stack" aria-labelledby="sa-stack">
+          <h3 id="sa-stack" class="block-title block-title--small">Built with</h3>
           <ul class="chips">
             <li>Python</li>
             <li>OpenCV</li>
@@ -498,15 +490,14 @@
       </article>
 
       <!-- ============================================================ -->
-      <!-- Project: Tennis Robot Vision (Waltair Robotics)               -->
+      <!-- Project: Tennis Robot Vision                                 -->
       <!-- Resume link: https://micheledamian.github.io/#tennis-robot    -->
       <!-- ============================================================ -->
-      <article class="project" id="tennis-robot" data-short="Tennis Robot Vision" aria-labelledby="waltair-title">
+      <article class="project" id="tennis-robot" data-short="Tennis Robot Vision" aria-labelledby="tr-title">
 
         <header class="section-head">
           <p class="project__name">Tennis Robot Vision</p>
-          <p class="project__meta">Waltair Robotics</p>
-          <h2 id="waltair-title">It knows where the ball will bounce, before it does.</h2>
+          <h2 id="tr-title">It knows where the ball will bounce, before it does.</h2>
           <p class="lede">
             One camera and a small edge computer follow a tennis ball at 50 frames a second,
             rebuild its flight in 3D, and call the bounce to within 5 inches.
@@ -573,8 +564,8 @@
         </figure>
 
         <!-- Results -->
-        <section class="results" aria-labelledby="waltair-results">
-          <h3 id="waltair-results" class="block-title">The results</h3>
+        <section class="results" aria-labelledby="tr-results">
+          <h3 id="tr-results" class="block-title">The results</h3>
           <ul class="stats">
             <li class="stat">
               <p class="stat__value">5&nbsp;in</p>
@@ -702,8 +693,8 @@
         </section>
 
         <!-- Stack -->
-        <section class="stack" aria-labelledby="waltair-stack">
-          <h3 id="waltair-stack" class="block-title block-title--small">Built with</h3>
+        <section class="stack" aria-labelledby="tr-stack">
+          <h3 id="tr-stack" class="block-title block-title--small">Built with</h3>
           <!-- TODO: add or remove tools you used on this project -->
           <ul class="chips">
             <li>Python</li>
