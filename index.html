@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Michele Damian, Computer Vision &amp; Machine Learning Engineer</title>
-  <meta name="description" content="Senior Computer Vision and Machine Learning Engineer. Perception systems that run where compute is scarce, from edge devices to the cloud.">
+  <title>Selected projects, Michele Damian</title>
+  <meta name="description" content="Computer vision and machine learning projects: a camera system that recognizes people and vehicles across cameras, and a single-camera tracker that calls a tennis ball’s bounce before it lands.">
 
   <!-- TODO: if you use a custom domain, replace https://micheledamian.github.io/ everywhere in this block -->
   <link rel="canonical" href="https://micheledamian.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Michele Damian">
-  <meta property="og:title" content="Michele Damian, Computer Vision &amp; Machine Learning Engineer">
+  <meta property="og:title" content="Selected projects, Michele Damian">
   <meta property="og:description" content="Edge perception, cross-camera re-identification and AI reasoning systems. Selected work, with results.">
   <meta property="og:url" content="https://micheledamian.github.io/">
   <meta property="og:image" content="https://micheledamian.github.io/assets/img/og-image.png">
@@ -57,30 +57,21 @@
     <!-- Hero                                                          -->
     <!-- ============================================================ -->
     <section class="hero" id="top">
-      <div class="lock">
-        <span class="lock__tag" aria-hidden="true">person ID:1 99%</span>
-        <h1 class="lock__name">Michele Damian</h1>
-      </div>
-      <p class="hero__role">Senior Computer Vision &amp; Machine Learning Engineer</p>
-      <p class="hero__pitch">
-        I build perception systems that run where compute is scarce: on a Jetson at 50&nbsp;fps,
-        on a 512&nbsp;MB Raspberry Pi, and in the cloud services behind them.
-        Thirteen years of it, starting at Caltech’s vision lab.
-      </p>
+      <h1 class="hero__title">Selected projects</h1>
 
       <ul class="index">
         <li>
           <a href="#security-agent">
             <span class="index__name">Security Agent</span>
             <span class="index__title">Cameras that remember who they’ve seen</span>
-            <span class="index__meta">Aiscopy Labs, 2026</span>
+            <span class="index__meta">Aiscopy Labs</span>
           </a>
         </li>
         <li>
           <a href="#tennis-robot">
             <span class="index__name">Tennis Robot Vision</span>
             <span class="index__title">Knowing where the ball will bounce, before it does</span>
-            <span class="index__meta">Waltair Robotics, 2023 to 2024</span>
+            <span class="index__meta">Waltair Robotics</span>
           </a>
         </li>
       </ul>
@@ -96,7 +87,7 @@
 
         <header class="section-head">
           <p class="project__name">Security Agent</p>
-          <p class="project__meta">Aiscopy Labs, Principal Engineer, April 2026 to present</p>
+          <p class="project__meta">Aiscopy Labs</p>
           <h2 id="aiscopy-title">Cameras that remember who they’ve seen.</h2>
           <p class="lede">
             A security camera system that spots people and vehicles on a tiny edge computer,
@@ -341,8 +332,98 @@
           </figure>
         </section>
 
+        <!-- Feature: one vehicle across cameras that don't overlap -->
+        <section class="feature" aria-labelledby="f-map">
+          <div class="feature__text">
+            <h3 id="f-map">It follows a car around the block.</h3>
+            <p>
+              Four cameras, each facing a different street, and no two of them overlap. Between their
+              views are blind stretches where the car can’t be seen at all.
+            </p>
+            <p>
+              Each time it comes back into view, its appearance signature matches it to the track it
+              already has. Four sightings, one car, one route.
+            </p>
+          </div>
+          <figure class="feature__visual">
+            <svg class="scene map is-seen" viewBox="0 0 600 600" role="img" aria-labelledby="map-desc">
+              <title id="map-desc">Street map of one city block with four numbered cameras, each facing a different street, with no overlap between their views. A car drives once around the block and each camera picks it up in turn, always as car ID 12.</title>
+              <defs><clipPath id="map-clip"><rect width="600" height="600" rx="18"/></clipPath></defs>
+              <g clip-path="url(#map-clip)">
+                <rect class="map__land" width="600" height="600"/>
+                <!-- streets -->
+                <g class="map__road">
+                  <rect x="0" y="64" width="600" height="52"/><rect x="0" y="484" width="600" height="52"/>
+                  <rect x="64" y="0" width="52" height="600"/><rect x="484" y="0" width="52" height="600"/>
+                </g>
+                <!-- neighbouring blocks -->
+                <rect class="map__park" x="116" y="536" width="368" height="64"/>
+                <g class="map__tree"><circle cx="138" cy="560" r="9"/><circle cx="170" cy="578" r="11"/><circle cx="214" cy="556" r="8"/><circle cx="402" cy="560" r="10"/><circle cx="436" cy="580" r="9"/><circle cx="468" cy="556" r="8"/></g>
+                <text class="map__park-name" x="232" y="573" text-anchor="middle">Alder Park</text>
+                <g class="map__bldg">
+                  <rect x="0" y="0" width="54" height="54"/><rect x="546" y="0" width="54" height="54"/><rect x="0" y="546" width="54" height="54"/><rect x="546" y="546" width="54" height="54"/>
+                  <rect x="126" y="0" width="92" height="54"/><rect x="228" y="0" width="104" height="54"/><rect x="342" y="0" width="132" height="54"/>
+                  <rect x="0" y="126" width="54" height="120"/><rect x="0" y="256" width="54" height="94"/><rect x="0" y="360" width="54" height="114"/>
+                  <rect x="546" y="126" width="54" height="84"/><rect x="546" y="220" width="54" height="140"/><rect x="546" y="370" width="54" height="104"/>
+                </g>
+                <!-- the block -->
+                <g class="map__bldg">
+                  <path d="M128 128H300V210H212V300H128Z"/>
+                  <path d="M312 128H472V238H382V192H312Z"/>
+                  <rect x="398" y="252" width="74" height="120"/>
+                  <rect x="338" y="386" width="134" height="86"/>
+                  <rect x="208" y="398" width="98" height="74"/>
+                  <rect x="128" y="312" width="68" height="160"/>
+                </g>
+                <rect class="map__lot" x="226" y="224" width="158" height="150" rx="4"/>
+                <path class="map__lot" d="M306 374H338V484H306Z"/>
+                <path class="map__stall" d="M246 224v34M246 340v34M266 224v34M266 340v34M286 224v34M286 340v34M306 224v34M306 340v34M326 224v34M326 340v34M346 224v34M346 340v34M366 224v34M366 340v34"/>
+                <!-- street names -->
+                <g class="map__street">
+                  <text x="400" y="90">Linden St</text>
+                  <text transform="translate(510 390) rotate(90)">Harbor Ave</text>
+                  <text x="200" y="510">Mercer St</text>
+                  <text transform="translate(90 210) rotate(-90)">Orchard Ave</text>
+                </g>
+                <!-- camera views: none of them overlap -->
+                <path class="map__fov" d="M134 130L243.3 -0.2A170 170 0 0 1 304.0 130.0Z" data-cam="1" data-x="134" data-y="130" data-dir="-25" data-half="25" data-range="170"/>
+                <path class="map__fov is-active" d="M470 134L602.6 223.5A160 160 0 0 1 475.6 293.9Z" data-cam="2" data-x="470" data-y="134" data-dir="61" data-half="27" data-range="160"/>
+                <path class="map__fov" d="M466 470L353.5 604.1A175 175 0 0 1 291.0 470.0Z" data-cam="3" data-x="466" data-y="470" data-dir="155" data-half="25" data-range="175"/>
+                <path class="map__fov" d="M130 466L3.6 359.9A165 165 0 0 1 130.0 301.0Z" data-cam="4" data-x="130" data-y="466" data-dir="-115" data-half="25" data-range="165"/>
+                <!-- the car's route: dashed where no camera sees it, solid where one does -->
+                <path class="map__route" id="map-route" d="M-20 102H476A22 22 0 0 1 498 124V476A22 22 0 0 1 476 498H124A22 22 0 0 1 102 476V-20"/>
+                <path class="map__seen" d="M158 102L302 102M498 153L498 292M442 498L294 498M102 442L102 304"/>
+                <g class="map__cam" data-cam="1" transform="translate(134 130)"><circle r="11"/><text y="4.5" text-anchor="middle">1</text></g>
+                <g class="map__cam is-active" data-cam="2" transform="translate(470 134)"><circle r="11"/><text y="4.5" text-anchor="middle">2</text></g>
+                <g class="map__cam" data-cam="3" transform="translate(466 470)"><circle r="11"/><text y="4.5" text-anchor="middle">3</text></g>
+                <g class="map__cam" data-cam="4" transform="translate(130 466)"><circle r="11"/><text y="4.5" text-anchor="middle">4</text></g>
+                <!-- the car (shown where camera 2 sees it; main.js drives it round the block) -->
+                <g class="map__car" transform="translate(498 222)">
+                  <g class="map__car-body" transform="rotate(90)">
+                    <rect x="-12.5" y="-6.5" width="25" height="13" rx="3.5"/>
+                    <path class="map__car-glass" d="M3.5 -5h4v10h-4zM-10 -4.5h3v9h-3z"/>
+                  </g>
+                  <rect class="box box--live map__spot" x="-17" y="-17" width="34" height="34"/>
+                </g>
+                <g class="tag tag--live map__spot map__tag" transform="translate(481 181)">
+                  <rect width="92" height="24" rx="2"/>
+                  <text x="8" y="17">car ID:12</text>
+                </g>
+                <!-- scale -->
+                <g class="map__scale" transform="translate(448 566)">
+                  <rect width="140" height="24" rx="4"/>
+                  <text x="10" y="16.5">20 m</text>
+                  <path d="M48 8v8h82V8"/>
+                </g>
+              </g>
+              <rect class="map__edge" x="0.75" y="0.75" width="598.5" height="598.5" rx="17.25"/>
+            </svg>
+            <figcaption>Solid where a camera sees the car, dashed where none does. It stays ID:12 all the way round.</figcaption>
+          </figure>
+        </section>
+
         <!-- Feature: chat -->
-        <section class="feature" aria-labelledby="f-chat">
+        <section class="feature feature--flip" aria-labelledby="f-chat">
           <div class="feature__text">
             <h3 id="f-chat">Ask it. Don’t scrub through footage.</h3>
             <p>
@@ -368,7 +449,7 @@
               <div class="msg">
                 <span class="avatar avatar--bot" aria-hidden="true"></span>
                 <div>
-                  <p class="msg__who">Aiscopy</p>
+                  <p class="msg__who">Security Agent</p>
                   <p>One person: dark jacket, grey backpack. They crossed the driveway on camera&nbsp;1 at 10:41 and reached the back gate on camera&nbsp;2 at 10:42.</p>
                 </div>
               </div>
@@ -382,7 +463,7 @@
               <div class="msg">
                 <span class="avatar avatar--bot" aria-hidden="true"></span>
                 <div>
-                  <p class="msg__who">Aiscopy</p>
+                  <p class="msg__who">Security Agent</p>
                   <p><span class="ok">Alert #1 added.</span></p>
                 </div>
               </div>
@@ -390,7 +471,7 @@
               <div class="msg msg--alert">
                 <span class="avatar avatar--bot" aria-hidden="true"></span>
                 <div>
-                  <p class="msg__who">Aiscopy</p>
+                  <p class="msg__who">Security Agent</p>
                   <p><strong>Alert #1, camera&nbsp;1.</strong> The person in the dark jacket with the grey backpack is back, heading to the front door.</p>
                 </div>
               </div>
@@ -424,7 +505,7 @@
 
         <header class="section-head">
           <p class="project__name">Tennis Robot Vision</p>
-          <p class="project__meta">Waltair Robotics, Senior Computer Vision Engineer, September 2023 to December 2024</p>
+          <p class="project__meta">Waltair Robotics</p>
           <h2 id="waltair-title">It knows where the ball will bounce, before it does.</h2>
           <p class="lede">
             One camera and a small edge computer follow a tennis ball at 50 frames a second,
@@ -645,7 +726,7 @@
   </main>
 
   <footer class="footer">
-    <p>© <span id="year">2026</span> Michele Damian</p>
+    <p>© Michele Damian</p>
     <a href="https://github.com/MicheleDamian" data-umami-event="github-click">GitHub</a>
   </footer>
 </body>

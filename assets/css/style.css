@@ -157,89 +157,24 @@ h3 {
 
 
 /* ==========================================================
-   Hero: the name, locked on like a tracked object
+   Hero: a short index of the projects
    ========================================================== */
 .hero {
-  min-height: calc(100svh - var(--nav-h));
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  padding: clamp(5rem, 14vh, 8rem) var(--gutter) clamp(4rem, 10vh, 6rem);
+  padding: clamp(4.5rem, 12vh, 7.5rem) var(--gutter) clamp(4rem, 10vh, 6rem);
 }
 
-.lock {
-  position: relative;
-  display: inline-block;
-  padding: 0.06em 0.36em 0.14em 0.3em;   /* extra right: the negative tracking eats into the last glyph */
-  margin-top: 1.2em;
-  max-width: 100%;
-}
-
-/* the bounding box */
-.lock::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 3px solid var(--signal);
-  border-radius: 2px;
-  animation: lock-box 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s both;
-}
-
-/* the overlay label, sitting on the box's top edge */
-.lock__tag {
-  position: absolute;
-  left: 0;
-  bottom: 100%;
-  padding: 3px 10px 4px;
-  background: var(--signal);
-  color: var(--black);
-  font-size: clamp(0.72rem, 1.4vw, 0.95rem);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-  border-radius: 2px 2px 0 0;
-  animation: lock-tag 0.35s ease-out 1.15s both;
-}
-
-.lock__name {
-  font-size: clamp(2.5rem, 10vw, 8.25rem);
+.hero__title {
+  font-size: clamp(2.5rem, 6.4vw, 5rem);
   font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.045em;
-  white-space: nowrap;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
 }
 
-@keyframes lock-box {
-  0%   { opacity: 0; transform: translate(4%, -8%) scale(1.22, 1.5); }
-  35%  { opacity: 1; transform: translate(-1.5%, 3%) scale(0.95, 0.9); }
-  55%  { transform: translate(0.8%, -1%) scale(1.03, 1.06); }
-  75%  { transform: translate(-0.3%, 0.4%) scale(0.99, 0.98); }
-  100% { opacity: 1; transform: none; }
-}
-
-@keyframes lock-tag {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: none; }
-}
-
-.hero__role {
-  margin-top: 28px;
-  font-size: clamp(1.15rem, 2.3vw, 1.6rem);
-  font-weight: 600;
-  letter-spacing: -0.015em;
-}
-
-.hero__pitch {
-  margin-top: 16px;
-  max-width: 34em;
-  color: var(--muted);
-  font-size: clamp(1.02rem, 1.5vw, 1.15rem);
-  text-wrap: pretty;
-}
-
-/* Project index under the pitch */
+/* Project index under the title */
 .index {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -653,6 +588,54 @@ h3 {
 
 .pill rect { fill: var(--black); stroke: var(--signal); stroke-width: 1.5; }
 .pill text { fill: var(--ink); font-size: 18px; font-weight: 600; }
+
+/* ---------- Block map (street map in a dark map style) ---------- */
+.map__land { fill: #19191b; }
+.map__road rect { fill: #2e2e32; }
+.map__bldg rect,
+.map__bldg path { fill: #232326; stroke: #2c2c30; stroke-width: 1; }
+.map__lot { fill: #1e1e21; }
+.map__stall { fill: none; stroke: #2b2b2f; stroke-width: 1.5; }
+.map__park { fill: #15231a; }
+.map__tree circle { fill: #1c3324; }
+.map__park-name { fill: #5b8a67; font-size: 13px; font-weight: 600; }
+.map__street text {
+  fill: #86868b;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.map__fov {
+  fill: rgba(255, 214, 10, 0.07);
+  stroke: rgba(255, 214, 10, 0.35);
+  stroke-width: 1.5;
+  transition: fill 0.25s, stroke 0.25s;
+}
+.map__fov.is-active { fill: rgba(255, 214, 10, 0.22); stroke: var(--signal); }
+
+.map__route { fill: none; stroke: #6e6e73; stroke-width: 2.5; stroke-dasharray: 4 7; stroke-linecap: round; }
+.map__seen { fill: none; stroke: var(--signal); stroke-width: 4; stroke-linecap: round; }
+
+.map__cam circle { fill: var(--black); stroke: var(--signal); stroke-width: 2.5; transition: fill 0.25s; }
+.map__cam text { fill: var(--signal); font-size: 13px; font-weight: 700; transition: fill 0.25s; }
+.map__cam.is-active circle { fill: var(--signal); }
+.map__cam.is-active text { fill: var(--black); }
+
+.map__car-body rect { fill: var(--ink); }
+.map__car-glass { fill: #48484a; }
+
+/* tracking box and tag: only while a camera sees the car */
+.map__spot { opacity: 0; transition: opacity 0.15s; }
+.map.is-seen .map__spot { opacity: 1; }
+.map .tag text { font-size: 15px; }
+
+.map__scale rect { fill: rgba(0, 0, 0, 0.7); }
+.map__scale text { fill: var(--muted); font-size: 12px; font-weight: 600; }
+.map__scale path { fill: none; stroke: var(--muted); stroke-width: 2; }
+.map__edge { fill: none; stroke: var(--line); stroke-width: 1.5; }
 
 /* ---------- Chat mock ---------- */
 .chat {

@@ -55,6 +55,15 @@ outline, so any you miss are obvious on the page.
   screen and hides over the opening screen. It is built automatically by `main.js` from
   every `<article class="project">`, using its `data-short` attribute as the label.
 
+## Block map (Security Agent)
+
+The street map in "It follows a car around the block" is an inline SVG, not a Google Maps
+embed, so it needs no API key, sets no cookies and shows no real address. `main.js` drives
+the car along `#map-route` and lights up a camera's view while the car is inside it, using
+each `.map__fov`'s `data-x`, `data-y`, `data-dir`, `data-half` and `data-range`. If you move
+a camera, update its wedge path, those attributes and the solid `.map__seen` segments together.
+With reduced motion (or no JavaScript) the map shows a still frame: camera 2 sees the car.
+
 ## Tracking per application
 
 Add a campaign tag before the `#` when you send a résumé, one per company:
@@ -81,7 +90,7 @@ records these events: `github-click`, and `security-agent-video-play` / `tennis-
 ```
 index.html            the page
 assets/css/style.css  all styles
-assets/js/main.js     project rail, active-link highlighting, video-play tracking, footer year
+assets/js/main.js     project rail, active-link highlighting, video-play tracking, block-map animation
 assets/img/           favicon, link-preview image (og-image.png, 1200x630)
 .nojekyll             tells GitHub Pages to serve files as-is
 ```
