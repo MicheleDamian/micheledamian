@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Michele Damian, Computer Vision &amp; Machine Learning Engineer</title>
+  <meta name="description" content="Senior Computer Vision and Machine Learning Engineer. Perception systems that run where compute is scarce, from edge devices to the cloud.">
+
+  <!-- TODO: if you use a custom domain, replace https://micheledamian.github.io/ everywhere in this block -->
+  <link rel="canonical" href="https://micheledamian.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Michele Damian">
+  <meta property="og:title" content="Michele Damian, Computer Vision &amp; Machine Learning Engineer">
+  <meta property="og:description" content="Edge perception, cross-camera re-identification and AI reasoning systems. Selected work, with results.">
+  <meta property="og:url" content="https://micheledamian.github.io/">
+  <meta property="og:image" content="https://micheledamian.github.io/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Umami analytics (cookieless). TODO: paste your website ID from cloud.umami.is.
+       data-domains keeps local previews out of your stats; update it if you add a custom domain. -->
+  <script defer src="https://cloud.umami.is/script.js"
+          data-website-id="REPLACE-WITH-YOUR-UMAMI-WEBSITE-ID"
+          data-domains="micheledamian.github.io"></script>
+  <script defer src="assets/js/main.js"></script>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="nav__name" href="#top">Michele Damian</a>
+      <!-- Adding a project: add a link here and an entry in .index below -->
+      <nav aria-label="Projects">
+        <ul class="nav__links">
+          <li><a href="#security-agent">Security Agent</a></li>
+          <li><a href="#tennis-robot">Tennis Robot<span class="nav__more"> Vision</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Project rail: filled in by main.js from every <article class="project"> (wide screens only) -->
+  <nav class="rail" aria-label="Where you are on the page"><ol></ol></nav>
+
+  <main id="main">
+
+    <!-- ============================================================ -->
+    <!-- Hero                                                          -->
+    <!-- ============================================================ -->
+    <section class="hero" id="top">
+      <div class="lock">
+        <span class="lock__tag" aria-hidden="true">person ID:1 99%</span>
+        <h1 class="lock__name">Michele Damian</h1>
+      </div>
+      <p class="hero__role">Senior Computer Vision &amp; Machine Learning Engineer</p>
+      <p class="hero__pitch">
+        I build perception systems that run where compute is scarce: on a Jetson at 50&nbsp;fps,
+        on a 512&nbsp;MB Raspberry Pi, and in the cloud services behind them.
+        Thirteen years of it, starting at Caltech’s vision lab.
+      </p>
+
+      <ul class="index">
+        <li>
+          <a href="#security-agent">
+            <span class="index__name">Security Agent</span>
+            <span class="index__title">Cameras that remember who they’ve seen</span>
+            <span class="index__meta">Aiscopy Labs, 2026</span>
+          </a>
+        </li>
+        <li>
+          <a href="#tennis-robot">
+            <span class="index__name">Tennis Robot Vision</span>
+            <span class="index__title">Knowing where the ball will bounce, before it does</span>
+            <span class="index__meta">Waltair Robotics, 2023 to 2024</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <div id="work">
+
+      <!-- ============================================================ -->
+      <!-- Project: Security Agent (Aiscopy Labs)                        -->
+      <!-- Resume link: https://micheledamian.github.io/#security-agent  -->
+      <!-- ============================================================ -->
+      <article class="project" id="security-agent" data-short="Security Agent" aria-labelledby="aiscopy-title">
+
+        <header class="section-head">
+          <p class="project__name">Security Agent</p>
+          <p class="project__meta">Aiscopy Labs, Principal Engineer, April 2026 to present</p>
+          <h2 id="aiscopy-title">Cameras that remember who they’ve seen.</h2>
+          <p class="lede">
+            A security camera system that spots people and vehicles on a tiny edge computer,
+            recognizes them across cameras and across days, and answers questions about them
+            in plain English.
+          </p>
+        </header>
+
+        <!-- Demo film -->
+        <figure class="film">
+          <div class="film__frame">
+
+            <!--
+              TODO: replace the whole .film__placeholder block with ONE of these once the video is ready.
+
+              Option A, self-hosted (keep the MP4 under ~20 MB: 720p or 1080p, H.264):
+              <video controls playsinline preload="none"
+                     poster="assets/img/security-agent-poster.jpg"
+                     data-track="security-agent-video-play">
+                <source src="assets/video/security-agent-demo.mp4" type="video/mp4">
+              </video>
+
+              Option B, unlisted YouTube video in privacy-enhanced mode:
+              <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0"
+                      title="Security Agent demo: cross-camera re-identification and chat alerts"
+                      loading="lazy"
+                      allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
+                      allowfullscreen></iframe>
+            -->
+            <div class="film__placeholder" role="img" aria-label="Demo film in production: two camera views and a chat window, side by side">
+              <div class="pane pane--cam">
+                <span class="pane__label">Camera 1</span>
+                <span class="pane__box"></span>
+              </div>
+              <div class="pane pane--cam">
+                <span class="pane__label">Camera 2</span>
+                <span class="pane__box pane__box--b"></span>
+              </div>
+              <div class="pane pane--chat">
+                <span class="pane__label">Chat</span>
+                <span class="pane__line"></span>
+                <span class="pane__line pane__line--short"></span>
+                <span class="pane__line"></span>
+              </div>
+              <p class="film__soon">Demo film in production</p>
+            </div>
+
+          </div>
+
+          <figcaption class="film__caption">
+            <p class="film__title">What the demo shows</p>
+            <ol class="chapters">
+              <li>A person walks through camera&nbsp;1’s view.</li>
+              <li>Camera&nbsp;2 picks them up and recognizes them as the same person.</li>
+              <li>In chat, someone asks who the cameras saw in the last few minutes. The answer names that person.</li>
+              <li>They set an alert: “tell me when this person comes back.” Camera&nbsp;1 sees them again, and the alert fires.</li>
+            </ol>
+          </figcaption>
+        </figure>
+
+        <!-- Results -->
+        <section class="results" aria-labelledby="aiscopy-results">
+          <h3 id="aiscopy-results" class="block-title">The results</h3>
+          <ul class="stats">
+            <li class="stat">
+              <p class="stat__value">2&nbsp;fps</p>
+              <p class="stat__text">Detection and tracking on a Raspberry Pi Zero&nbsp;2. 512&nbsp;MB of memory, no GPU, no fan.</p>
+            </li>
+            <li class="stat">
+              <p class="stat__value">5%</p>
+              <p class="stat__text">of frames ever reach the cloud. Only genuine movement gets sent.</p>
+            </li>
+            <li class="stat">
+              <!-- TODO: Re-ID accuracy and number of crossings -->
+              <p class="stat__value"><span class="ph">XX</span>%</p>
+              <p class="stat__text">Top-1 re-identification across cameras that don’t overlap, over <span class="ph">N</span> real crossings.</p>
+            </li>
+            <li class="stat">
+              <!-- TODO: time from the person reappearing on camera to the alert in chat -->
+              <p class="stat__value"><span class="ph">X</span>&nbsp;s</p>
+              <p class="stat__text">From a person reappearing on camera to the alert in chat.</p>
+            </li>
+            <li class="stat">
+              <p class="stat__value">Capped</p>
+              <p class="stat__text">AI cost per event. A fixed frame budget, whether someone walks past or lingers.</p>
+            </li>
+            <li class="stat">
+              <!-- TODO: cloud cost per camera per month -->
+              <p class="stat__value">$<span class="ph">X</span></p>
+              <p class="stat__text">Cloud cost per camera, per month.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- How it works -->
+        <section class="flow" aria-labelledby="aiscopy-flow">
+          <h3 id="aiscopy-flow" class="block-title">Three parts, one system</h3>
+          <ol class="flow__steps">
+            <li class="flow__step">
+              <span class="flow__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="14" height="11" rx="2.5"/><path d="M16.5 10.5l5-2.5v8l-5-2.5z"/></svg>
+              </span>
+              <h4>On the camera</h4>
+              <p>Finds people and vehicles, follows each one from frame to frame, and keeps only the moments where something really moves.</p>
+            </li>
+            <li class="flow__step">
+              <span class="flow__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 18.5h10.5a4.5 4.5 0 0 0 .6-8.96A6.5 6.5 0 0 0 5.6 8.6 5 5 0 0 0 7 18.5z"/></svg>
+              </span>
+              <h4>In the cloud</h4>
+              <p>A vision-language model describes what happened. Appearance signatures link the same person or vehicle across cameras and days, into one searchable history.</p>
+            </li>
+            <li class="flow__step">
+              <span class="flow__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 4.5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H10l-5 4v-4H4a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1z"/></svg>
+              </span>
+              <h4>In your chat</h4>
+              <p>Ask questions and set alerts in plain English. Alerts arrive the moment they fire.</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Feature: real motion -->
+        <section class="feature" aria-labelledby="f-motion">
+          <div class="feature__text">
+            <h3 id="f-motion">It notices what moves, not what flickers.</h3>
+            <p>
+              Swaying branches, passing headlights, a parked car: the pixels change, but nothing is happening.
+              The camera estimates how fast each object really moves through the scene, from a single
+              uncalibrated lens, and wakes the cloud only when it matters.
+            </p>
+            <p>That’s why 95% of frames never leave the device.</p>
+          </div>
+          <figure class="feature__visual">
+            <svg class="scene" viewBox="0 110 640 250" role="img" aria-labelledby="motion-desc">
+              <title id="motion-desc">A parked car marked as stationary and ignored, next to a walking person marked as moving</title>
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#1c1c1e"/>
+                  <stop offset="1" stop-color="#0a0a0a"/>
+                </linearGradient>
+                <symbol id="walker" viewBox="0 0 40 100">
+                  <circle cx="20" cy="11" r="10"/>
+                  <rect x="7" y="24" width="26" height="42" rx="11"/>
+                  <rect x="9" y="58" width="9" height="42" rx="4.5"/>
+                  <rect x="22" y="58" width="9" height="42" rx="4.5"/>
+                </symbol>
+              </defs>
+              <rect x="0" y="110" width="640" height="250" rx="18" fill="url(#sky)"/>
+              <g class="scene__ground">
+                <line x1="0" y1="190" x2="640" y2="190"/>
+                <line x1="320" y1="190" x2="-60" y2="360"/>
+                <line x1="320" y1="190" x2="700" y2="360"/>
+                <line x1="320" y1="190" x2="190" y2="360"/>
+                <line x1="320" y1="190" x2="450" y2="360"/>
+              </g>
+
+              <!-- Parked car: tracked, stationary, ignored -->
+              <g class="scene__obj">
+                <path d="M78 262 l20-30 h86 l26 30z"/>
+                <rect x="58" y="258" width="180" height="46" rx="12"/>
+                <circle cx="100" cy="306" r="15" class="scene__wheel"/>
+                <circle cx="198" cy="306" r="15" class="scene__wheel"/>
+              </g>
+              <rect class="box box--idle" x="50" y="222" width="196" height="104" rx="2"/>
+              <g class="tag tag--idle" transform="translate(50 190)">
+                <rect width="212" height="32" rx="2"/>
+                <text x="10" y="23">car ID:3 stationary</text>
+              </g>
+
+              <!-- Walking person: trail, then current box -->
+              <use href="#walker" x="316" y="208" width="40" height="100" class="scene__ghost" opacity=".18"/>
+              <use href="#walker" x="356" y="212" width="42" height="104" class="scene__ghost" opacity=".35"/>
+              <use href="#walker" x="402" y="216" width="44" height="108" class="scene__obj"/>
+              <rect class="box box--live" x="392" y="206" width="64" height="126" rx="2"/>
+              <g class="tag tag--live" transform="translate(392 174)">
+                <rect width="212" height="32" rx="2"/>
+                <text x="10" y="23">person ID:4 moving</text>
+              </g>
+            </svg>
+            <figcaption>The parked car is tracked but never sent. The walking person is.</figcaption>
+          </figure>
+        </section>
+
+        <!-- Feature: re-identification -->
+        <section class="feature feature--flip" aria-labelledby="f-reid">
+          <div class="feature__text">
+            <h3 id="f-reid">It knows who it has seen before.</h3>
+            <p>
+              Every person and vehicle gets an appearance signature. When the same one walks into another
+              camera’s view, or comes back next week, the system connects the sightings.
+            </p>
+            <p>Recurring visitors surface on their own, without anyone labeling them.</p>
+          </div>
+          <figure class="feature__visual">
+            <svg class="scene" viewBox="0 0 640 330" role="img" aria-labelledby="reid-desc">
+              <title id="reid-desc">The same person seen by camera 1 and then camera 2, keeping the same identity</title>
+              <defs>
+                <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#1c1c1e"/>
+                  <stop offset="1" stop-color="#0a0a0a"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Camera 1 -->
+              <rect x="0" y="0" width="304" height="240" rx="14" fill="url(#sky2)"/>
+              <g class="scene__ground">
+                <line x1="0" y1="120" x2="304" y2="120"/>
+                <line x1="200" y1="120" x2="40" y2="240"/>
+                <line x1="200" y1="120" x2="304" y2="198"/>
+              </g>
+              <text class="scene__label" x="16" y="32">Camera 1, 10:41</text>
+              <use href="#walker" x="110" y="118" width="40" height="100" class="scene__obj"/>
+              <rect class="box box--live" x="100" y="108" width="60" height="120" rx="2"/>
+              <g class="tag tag--live" transform="translate(100 76)">
+                <rect width="140" height="32" rx="2"/>
+                <text x="10" y="23">person ID:7</text>
+              </g>
+
+              <!-- Camera 2 -->
+              <rect x="336" y="0" width="304" height="240" rx="14" fill="url(#sky2)"/>
+              <g class="scene__ground">
+                <line x1="336" y1="104" x2="640" y2="104"/>
+                <line x1="420" y1="104" x2="336" y2="168"/>
+                <line x1="420" y1="104" x2="600" y2="240"/>
+              </g>
+              <text class="scene__label" x="352" y="32">Camera 2, 10:42</text>
+              <use href="#walker" x="468" y="112" width="32" height="80" class="scene__obj"/>
+              <rect class="box box--live" x="460" y="104" width="48" height="96" rx="2"/>
+              <g class="tag tag--live" transform="translate(460 72)">
+                <rect width="140" height="32" rx="2"/>
+                <text x="10" y="23">person ID:7</text>
+              </g>
+
+              <!-- Link -->
+              <path class="scene__link" d="M130 252 C130 304, 484 304, 484 252"/>
+              <g class="pill" transform="translate(172 276)">
+                <rect width="270" height="38" rx="19"/>
+                <text x="135" y="25" text-anchor="middle">Same person, two cameras</text>
+              </g>
+            </svg>
+          </figure>
+        </section>
+
+        <!-- Feature: chat -->
+        <section class="feature" aria-labelledby="f-chat">
+          <div class="feature__text">
+            <h3 id="f-chat">Ask it. Don’t scrub through footage.</h3>
+            <p>
+              A question in chat becomes a search of the event history that the AI writes, checks and
+              corrects on its own, then answers in plain English. Every search runs read-only, so a question
+              can never change the data.
+            </p>
+            <p>
+              Alerts work the same way. Describe what you care about in your own words, and every new
+              event is checked against it.
+            </p>
+          </div>
+          <figure class="feature__visual">
+            <!-- TODO: once the film is final, match the descriptions and times below to it -->
+            <div class="chat" role="img" aria-label="Example chat: asking who the cameras saw, setting an alert, and receiving it">
+              <div class="msg msg--you">
+                <span class="avatar avatar--you" aria-hidden="true">You</span>
+                <div>
+                  <p class="msg__who">You</p>
+                  <p><span class="cmd">/ask</span> who did the cameras see in the last 5 minutes?</p>
+                </div>
+              </div>
+              <div class="msg">
+                <span class="avatar avatar--bot" aria-hidden="true"></span>
+                <div>
+                  <p class="msg__who">Aiscopy</p>
+                  <p>One person: dark jacket, grey backpack. They crossed the driveway on camera&nbsp;1 at 10:41 and reached the back gate on camera&nbsp;2 at 10:42.</p>
+                </div>
+              </div>
+              <div class="msg msg--you">
+                <span class="avatar avatar--you" aria-hidden="true">You</span>
+                <div>
+                  <p class="msg__who">You</p>
+                  <p><span class="cmd">/alert add</span> tell me when this person comes back</p>
+                </div>
+              </div>
+              <div class="msg">
+                <span class="avatar avatar--bot" aria-hidden="true"></span>
+                <div>
+                  <p class="msg__who">Aiscopy</p>
+                  <p><span class="ok">Alert #1 added.</span></p>
+                </div>
+              </div>
+              <p class="chat__gap">18 minutes later</p>
+              <div class="msg msg--alert">
+                <span class="avatar avatar--bot" aria-hidden="true"></span>
+                <div>
+                  <p class="msg__who">Aiscopy</p>
+                  <p><strong>Alert #1, camera&nbsp;1.</strong> The person in the dark jacket with the grey backpack is back, heading to the front door.</p>
+                </div>
+              </div>
+            </div>
+          </figure>
+        </section>
+
+        <!-- Stack -->
+        <section class="stack" aria-labelledby="aiscopy-stack">
+          <h3 id="aiscopy-stack" class="block-title block-title--small">Built with</h3>
+          <ul class="chips">
+            <li>Python</li>
+            <li>OpenCV</li>
+            <li>LiteRT</li>
+            <li>Raspberry Pi</li>
+            <li>Gemini</li>
+            <li>FastAPI</li>
+            <li>Google Cloud Run</li>
+            <li>PostgreSQL + pgvector</li>
+            <li>Discord</li>
+          </ul>
+        </section>
+
+      </article>
+
+      <!-- ============================================================ -->
+      <!-- Project: Tennis Robot Vision (Waltair Robotics)               -->
+      <!-- Resume link: https://micheledamian.github.io/#tennis-robot    -->
+      <!-- ============================================================ -->
+      <article class="project" id="tennis-robot" data-short="Tennis Robot Vision" aria-labelledby="waltair-title">
+
+        <header class="section-head">
+          <p class="project__name">Tennis Robot Vision</p>
+          <p class="project__meta">Waltair Robotics, Senior Computer Vision Engineer, September 2023 to December 2024</p>
+          <h2 id="waltair-title">It knows where the ball will bounce, before it does.</h2>
+          <p class="lede">
+            One camera and a small edge computer follow a tennis ball at 50 frames a second,
+            rebuild its flight in 3D, and call the bounce to within 5 inches.
+          </p>
+        </header>
+
+        <!-- Demo film -->
+        <figure class="film">
+          <div class="film__frame">
+
+            <!--
+              TODO: replace the whole .film__placeholder block with ONE of these once the video is ready.
+
+              Option A, self-hosted (keep the MP4 under ~20 MB: 720p or 1080p, H.264):
+              <video controls playsinline preload="none"
+                     poster="assets/img/tennis-robot-poster.jpg"
+                     data-track="tennis-robot-video-play">
+                <source src="assets/video/tennis-robot-demo.mp4" type="video/mp4">
+              </video>
+
+              Option B, unlisted YouTube video in privacy-enhanced mode:
+              <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0"
+                      title="Tennis Robot Vision demo: tennis ball tracking with a live court map"
+                      loading="lazy"
+                      allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
+                      allowfullscreen></iframe>
+            -->
+            <div class="film__placeholder film__placeholder--single" role="img" aria-label="Demo film in production: a tennis court seen from one camera, with an overhead court map in the corner">
+              <svg class="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <rect width="1600" height="900" fill="url(#sky)"/>
+                <g class="scene__court">
+                  <path d="M170 840 L1430 840 L1030 300 L570 300 Z"/>
+                  <path d="M327 840 L627 300 M1273 840 L973 300"/>
+                  <path d="M258 721 L1342 721"/>
+                  <path d="M520 368 L1080 368 M424 604 L1176 604"/>
+                  <path d="M800 368 L800 604"/>
+                </g>
+                <path class="scene__net" d="M455 470 L1145 470"/>
+                <circle cx="930" cy="390" r="7" class="scene__ball"/>
+                <rect class="box box--live" x="916" y="376" width="28" height="28"/>
+                <!-- overhead court map -->
+                <g transform="translate(1380 60)">
+                  <rect width="170" height="340" rx="8" class="scene__map"/>
+                  <g class="scene__court scene__court--map">
+                    <rect x="20" y="20" width="130" height="300"/>
+                    <path d="M36 20 V320 M134 20 V320 M20 170 H150 M36 101 H134 M36 239 H134 M85 101 V239"/>
+                  </g>
+                  <circle cx="104" cy="126" r="7" class="scene__ball scene__ball--map"/>
+                </g>
+              </svg>
+              <p class="film__soon">Demo film in production</p>
+            </div>
+
+          </div>
+
+          <figcaption class="film__caption">
+            <p class="film__title">What the demo shows</p>
+            <ol class="chapters">
+              <li>A player rallies on a real court, filmed by a single camera.</li>
+              <li>The ball is found and followed in every frame, at full speed.</li>
+              <li>An overhead map in the corner plots where the ball is on the court, live.</li>
+            </ol>
+          </figcaption>
+        </figure>
+
+        <!-- Results -->
+        <section class="results" aria-labelledby="waltair-results">
+          <h3 id="waltair-results" class="block-title">The results</h3>
+          <ul class="stats">
+            <li class="stat">
+              <p class="stat__value">5&nbsp;in</p>
+              <p class="stat__text">Accuracy of the predicted bounce spot, from one camera.</p>
+            </li>
+            <li class="stat">
+              <p class="stat__value">50&nbsp;fps</p>
+              <p class="stat__text">On an NVIDIA Jetson Nano, while the same processor records video.</p>
+            </li>
+            <li class="stat">
+              <!-- TODO: speed-up of the custom detector over YOLO on the same device -->
+              <p class="stat__value"><span class="ph">X</span>×</p>
+              <p class="stat__text">Faster than YOLO on the same device, and more accurate on tennis balls.</p>
+            </li>
+            <li class="stat">
+              <!-- TODO: how early the bounce is predicted, in ms (typical or median) -->
+              <p class="stat__value"><span class="ph">X</span>&nbsp;ms</p>
+              <p class="stat__text">Before the ball lands. The call is made while it is still in the air.</p>
+            </li>
+            <li class="stat">
+              <p class="stat__value">0</p>
+              <p class="stat__text">Manual calibration steps. The procedure it replaced was done by hand.</p>
+            </li>
+            <li class="stat">
+              <p class="stat__value">5</p>
+              <p class="stat__text">People on the data team I directed, building tennis datasets that had no public equivalent.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Feature: tiny object -->
+        <section class="feature" aria-labelledby="f-tiny">
+          <div class="feature__text">
+            <h3 id="f-tiny">It finds a ball a few pixels wide.</h3>
+            <p>
+              At the far baseline a tennis ball is a smudge, and general-purpose detectors lose it.
+              A detector built for this one job finds it faster and more reliably than YOLO.
+            </p>
+            <p>
+              When several spots look like a ball, the tracker keeps each possibility open until
+              the laws of motion rule out all but one.
+            </p>
+          </div>
+          <figure class="feature__visual">
+            <svg class="scene" viewBox="0 0 640 360" role="img" aria-labelledby="tiny-desc">
+              <title id="tiny-desc">A court with three ball-like candidates; the real ball is confirmed and shown magnified, a few pixels across</title>
+              <rect width="640" height="360" rx="18" fill="url(#sky)"/>
+              <g class="scene__court scene__court--faint">
+                <path d="M40 340 L400 340 L300 80 L140 80 Z"/>
+                <path d="M86 340 L160 80 M354 340 L280 80 M90 170 L350 170"/>
+              </g>
+              <!-- look-alikes, ruled out -->
+              <circle cx="118" cy="120" r="3" class="scene__decoy"/>
+              <rect class="box box--idle box--thin" x="110" y="112" width="16" height="16"/>
+              <circle cx="330" cy="262" r="3" class="scene__decoy"/>
+              <rect class="box box--idle box--thin" x="322" y="254" width="16" height="16"/>
+              <!-- the ball -->
+              <circle cx="232" cy="150" r="3.5" class="scene__ball"/>
+              <rect class="box box--live box--thin" x="223" y="141" width="18" height="18"/>
+              <path class="scene__leader" d="M241 150 L420 150"/>
+              <!-- magnifier -->
+              <g transform="translate(420 60)">
+                <rect width="180" height="180" rx="10" class="scene__map"/>
+                <g class="px">
+                  <rect x="6" y="6" width="28" height="28"/><rect x="34" y="6" width="28" height="28"/><rect x="62" y="6" width="28" height="28" class="px--1"/><rect x="90" y="6" width="28" height="28"/><rect x="118" y="6" width="28" height="28"/><rect x="146" y="6" width="28" height="28" class="px--1"/>
+                  <rect x="6" y="34" width="28" height="28" class="px--1"/><rect x="34" y="34" width="28" height="28"/><rect x="62" y="34" width="28" height="28" class="px--2"/><rect x="90" y="34" width="28" height="28" class="px--2"/><rect x="118" y="34" width="28" height="28"/><rect x="146" y="34" width="28" height="28"/>
+                  <rect x="6" y="62" width="28" height="28"/><rect x="34" y="62" width="28" height="28" class="px--2"/><rect x="62" y="62" width="28" height="28" class="px--3"/><rect x="90" y="62" width="28" height="28" class="px--3"/><rect x="118" y="62" width="28" height="28" class="px--2"/><rect x="146" y="62" width="28" height="28"/>
+                  <rect x="6" y="90" width="28" height="28"/><rect x="34" y="90" width="28" height="28" class="px--2"/><rect x="62" y="90" width="28" height="28" class="px--3"/><rect x="90" y="90" width="28" height="28" class="px--3"/><rect x="118" y="90" width="28" height="28" class="px--2"/><rect x="146" y="90" width="28" height="28" class="px--1"/>
+                  <rect x="6" y="118" width="28" height="28"/><rect x="34" y="118" width="28" height="28"/><rect x="62" y="118" width="28" height="28" class="px--2"/><rect x="90" y="118" width="28" height="28" class="px--2"/><rect x="118" y="118" width="28" height="28"/><rect x="146" y="118" width="28" height="28"/>
+                  <rect x="6" y="146" width="28" height="28" class="px--1"/><rect x="34" y="146" width="28" height="28"/><rect x="62" y="146" width="28" height="28"/><rect x="90" y="146" width="28" height="28" class="px--1"/><rect x="118" y="146" width="28" height="28"/><rect x="146" y="146" width="28" height="28"/>
+                </g>
+                <rect class="box box--live" x="34" y="34" width="112" height="112"/>
+                <g class="tag tag--live" transform="translate(34 2)">
+                  <rect width="84" height="32" rx="2"/>
+                  <text x="10" y="23">ball</text>
+                </g>
+              </g>
+              <text class="scene__label" x="510" y="272" text-anchor="middle">A few pixels across</text>
+            </svg>
+            <figcaption>Three candidates, one ball. The other two don’t move like one.</figcaption>
+          </figure>
+        </section>
+
+        <!-- Feature: 3D from one camera -->
+        <section class="feature feature--flip" aria-labelledby="f-3d">
+          <div class="feature__text">
+            <h3 id="f-3d">One camera. The whole court in 3D.</h3>
+            <p>
+              How far away the ball is comes from how big it looks. Where the player stands comes from
+              mapping the image onto the court itself. Both are solved exactly, lens distortion
+              included, so the flight path can be carried forward to the bounce.
+            </p>
+            <p>
+              Setting up the camera used to be a manual calibration job. It now calibrates itself.
+            </p>
+          </div>
+          <figure class="feature__visual">
+            <svg class="scene" viewBox="0 0 640 360" role="img" aria-labelledby="arc-desc">
+              <title id="arc-desc">A ball's observed flight over the court, continued as a dashed prediction to its bounce point</title>
+              <rect width="640" height="360" rx="18" fill="url(#sky)"/>
+              <g class="scene__court">
+                <path d="M70 330 L570 330 L420 120 L220 120 Z"/>
+                <path d="M132 330 L245 120 M508 330 L395 120"/>
+                <path d="M229 150 L411 150 M173 255 L467 255 M320 150 L320 255"/>
+              </g>
+              <path class="scene__net" d="M160 183 L480 183"/>
+              <!-- observed flight -->
+              <circle cx="250" cy="110" r="4" class="scene__ball" opacity=".35"/>
+              <circle cx="266" cy="95.7" r="4.2" class="scene__ball" opacity=".45"/>
+              <circle cx="282" cy="88.8" r="4.4" class="scene__ball" opacity=".55"/>
+              <circle cx="298" cy="89.3" r="4.6" class="scene__ball" opacity=".7"/>
+              <circle cx="314" cy="97.2" r="4.8" class="scene__ball" opacity=".85"/>
+              <circle cx="330" cy="112.5" r="5" class="scene__ball"/>
+              <rect class="box box--live box--thin" x="320" y="102.5" width="20" height="20"/>
+              <!-- predicted continuation -->
+              <path class="scene__predict" d="M330 112.5 Q370 160 410 300"/>
+              <ellipse cx="410" cy="300" rx="20" ry="7" class="scene__bounce"/>
+              <g class="tag tag--live" transform="translate(434 284)">
+                <rect width="176" height="32" rx="2"/>
+                <text x="10" y="23">predicted bounce</text>
+              </g>
+            </svg>
+            <figcaption>Solid: where the ball has been. Dashed: where it will land.</figcaption>
+          </figure>
+        </section>
+
+        <!-- Stack -->
+        <section class="stack" aria-labelledby="waltair-stack">
+          <h3 id="waltair-stack" class="block-title block-title--small">Built with</h3>
+          <!-- TODO: add or remove tools you used on this project -->
+          <ul class="chips">
+            <li>Python</li>
+            <li>OpenCV</li>
+            <li>ONNX</li>
+            <li>NVIDIA Jetson Nano</li>
+            <li>Redis</li>
+            <li>AWS SageMaker Ground Truth</li>
+            <li>Mathematica</li>
+          </ul>
+        </section>
+
+      </article>
+
+      <!-- Next project goes here: copy an <article class="project"> block, give it a new id and
+           data-short (the rail label), then add it to the nav and to .index in the hero. -->
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year">2026</span> Michele Damian</p>
+    <a href="https://github.com/MicheleDamian" data-umami-event="github-click">GitHub</a>
+  </footer>
+</body>
+</html>
