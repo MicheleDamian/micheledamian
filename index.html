@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Michele Damian, Computer Vision &amp; Machine Learning Engineer</title>
-  <meta name="description" content="Senior Computer Vision and Machine Learning Engineer. Perception systems that run where compute is scarce, from edge devices to the cloud.">
+  <title>Michele Damian</title>
+  <meta name="description" content="Computer vision and machine learning projects: a camera system that recognizes people and vehicles across cameras, and a single-camera tracker that calls a tennis ball’s bounce before it lands.">
 
   <!-- TODO: if you use a custom domain, replace https://micheledamian.github.io/ everywhere in this block -->
   <link rel="canonical" href="https://micheledamian.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Michele Damian">
-  <meta property="og:title" content="Michele Damian, Computer Vision &amp; Machine Learning Engineer">
+  <meta property="og:title" content="Michele Damian">
   <meta property="og:description" content="Edge perception, cross-camera re-identification and AI reasoning systems. Selected work, with results.">
   <meta property="og:url" content="https://micheledamian.github.io/">
   <meta property="og:image" content="https://micheledamian.github.io/assets/img/og-image.png">
@@ -57,30 +57,19 @@
     <!-- Hero                                                          -->
     <!-- ============================================================ -->
     <section class="hero" id="top">
-      <div class="lock">
-        <span class="lock__tag" aria-hidden="true">person ID:1 99%</span>
-        <h1 class="lock__name">Michele Damian</h1>
-      </div>
-      <p class="hero__role">Senior Computer Vision &amp; Machine Learning Engineer</p>
-      <p class="hero__pitch">
-        I build perception systems that run where compute is scarce: on a Jetson at 50&nbsp;fps,
-        on a 512&nbsp;MB Raspberry Pi, and in the cloud services behind them.
-        Thirteen years of it, starting at Caltech’s vision lab.
-      </p>
+      <h1 class="hero__name">Michele Damian</h1>
 
       <ul class="index">
         <li>
           <a href="#security-agent">
             <span class="index__name">Security Agent</span>
             <span class="index__title">Cameras that remember who they’ve seen</span>
-            <span class="index__meta">Aiscopy Labs, 2026</span>
           </a>
         </li>
         <li>
           <a href="#tennis-robot">
             <span class="index__name">Tennis Robot Vision</span>
             <span class="index__title">Knowing where the ball will bounce, before it does</span>
-            <span class="index__meta">Waltair Robotics, 2023 to 2024</span>
           </a>
         </li>
       </ul>
@@ -89,15 +78,14 @@
     <div id="work">
 
       <!-- ============================================================ -->
-      <!-- Project: Security Agent (Aiscopy Labs)                        -->
+      <!-- Project: Security Agent                                      -->
       <!-- Resume link: https://micheledamian.github.io/#security-agent  -->
       <!-- ============================================================ -->
-      <article class="project" id="security-agent" data-short="Security Agent" aria-labelledby="aiscopy-title">
+      <article class="project" id="security-agent" data-short="Security Agent" aria-labelledby="sa-title">
 
         <header class="section-head">
           <p class="project__name">Security Agent</p>
-          <p class="project__meta">Aiscopy Labs, Principal Engineer, April 2026 to present</p>
-          <h2 id="aiscopy-title">Cameras that remember who they’ve seen.</h2>
+          <h2 id="sa-title">Cameras that remember who they’ve seen.</h2>
           <p class="lede">
             A security camera system that spots people and vehicles on a tiny edge computer,
             recognizes them across cameras and across days, and answers questions about them
@@ -105,14 +93,16 @@
           </p>
         </header>
 
-        <!-- Demo film -->
+        <!-- Demo film: one video, two camera views (4:3) stacked on the left and the chat on a
+             phone (portrait) on the right. Export it at 9:8, e.g. 1620x1440: each camera 960x720,
+             the phone column 660x1440. -->
         <figure class="film">
-          <div class="film__frame">
+          <div class="film__frame film__frame--split">
 
             <!--
               TODO: replace the whole .film__placeholder block with ONE of these once the video is ready.
 
-              Option A, self-hosted (keep the MP4 under ~20 MB: 720p or 1080p, H.264):
+              Option A, self-hosted (keep the MP4 under ~20 MB, H.264):
               <video controls playsinline preload="none"
                      poster="assets/img/security-agent-poster.jpg"
                      data-track="security-agent-video-play">
@@ -121,12 +111,12 @@
 
               Option B, unlisted YouTube video in privacy-enhanced mode:
               <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0"
-                      title="Security Agent demo: cross-camera re-identification and chat alerts"
+                      title="Security Agent demo: two cameras and the chat on a phone"
                       loading="lazy"
                       allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
                       allowfullscreen></iframe>
             -->
-            <div class="film__placeholder" role="img" aria-label="Demo film in production: two camera views and a chat window, side by side">
+            <div class="film__placeholder film__placeholder--split" role="img" aria-label="Demo film in production: two camera views stacked, with the chat on a phone beside them">
               <div class="pane pane--cam">
                 <span class="pane__label">Camera 1</span>
                 <span class="pane__box"></span>
@@ -135,11 +125,12 @@
                 <span class="pane__label">Camera 2</span>
                 <span class="pane__box pane__box--b"></span>
               </div>
-              <div class="pane pane--chat">
+              <div class="pane pane--phone">
                 <span class="pane__label">Chat</span>
                 <span class="pane__line"></span>
                 <span class="pane__line pane__line--short"></span>
                 <span class="pane__line"></span>
+                <span class="pane__line pane__line--short"></span>
               </div>
               <p class="film__soon">Demo film in production</p>
             </div>
@@ -158,8 +149,8 @@
         </figure>
 
         <!-- Results -->
-        <section class="results" aria-labelledby="aiscopy-results">
-          <h3 id="aiscopy-results" class="block-title">The results</h3>
+        <section class="results" aria-labelledby="sa-results">
+          <h3 id="sa-results" class="block-title">The results</h3>
           <ul class="stats">
             <li class="stat">
               <p class="stat__value">2&nbsp;fps</p>
@@ -192,8 +183,8 @@
         </section>
 
         <!-- How it works -->
-        <section class="flow" aria-labelledby="aiscopy-flow">
-          <h3 id="aiscopy-flow" class="block-title">Three parts, one system</h3>
+        <section class="flow" aria-labelledby="sa-flow">
+          <h3 id="sa-flow" class="block-title">Three parts, one system</h3>
           <ol class="flow__steps">
             <li class="flow__step">
               <span class="flow__icon" aria-hidden="true">
@@ -341,8 +332,93 @@
           </figure>
         </section>
 
+        <!-- Feature: one vehicle across cameras that don't overlap -->
+        <section class="feature" aria-labelledby="f-map">
+          <div class="feature__text">
+            <h3 id="f-map">Three cameras. One car, not three.</h3>
+            <p>
+              A family house on a corner, with a camera on each way in: the driveway, the side gate,
+              the back gate. Each one watches the house’s own ground, and none of their views overlap.
+            </p>
+            <p>
+              When the same car turns up at the back gate, then the side gate, then the driveway,
+              its appearance signature ties the sightings together. You get one car and where it went,
+              not three unrelated alerts.
+            </p>
+          </div>
+          <figure class="feature__visual">
+            <svg class="scene map is-seen" viewBox="0 0 600 600" role="img" aria-labelledby="map-desc">
+              <title id="map-desc">Map of a corner house bordered by three streets, with a neighbour's house on the fourth side. Three numbered cameras on the house watch the driveway, the side gate and the back gate; their views don't overlap and stop at the street. A car drives past the back gate, the side gate and the driveway, and each camera picks it up in turn as car ID 12.</title>
+              <defs><clipPath id="map-clip"><rect width="600" height="600" rx="18"/></clipPath></defs>
+              <g clip-path="url(#map-clip)">
+                <rect class="map__lawn" width="600" height="600"/>
+                <!-- streets and pavements -->
+                <g class="map__walk"><rect x="0" y="104" width="600" height="57"/><rect x="0" y="439" width="600" height="57"/><rect x="54" y="0" width="57" height="600"/></g>
+                <g class="map__road"><rect x="0" y="110" width="600" height="45"/><rect x="0" y="445" width="600" height="45"/><rect x="60" y="0" width="45" height="600"/></g>
+                <!-- houses across the street -->
+                <g class="map__house">
+                  <rect x="150" y="22" width="92" height="62"/><rect x="300" y="14" width="80" height="70"/><rect x="440" y="24" width="104" height="58"/>
+                  <rect x="0" y="196" width="36" height="80"/><rect x="0" y="330" width="36" height="72"/>
+                  <rect x="150" y="514" width="86" height="64"/><rect x="298" y="520" width="96" height="60"/><rect x="452" y="512" width="80" height="66"/>
+                </g>
+                <g class="map__drive"><rect x="252" y="84" width="26" height="20"/><rect x="394" y="84" width="26" height="20"/><rect x="200" y="496" width="24" height="18"/><rect x="408" y="496" width="24" height="18"/></g>
+                <!-- the neighbour -->
+                <path class="map__fence" d="M330 161V439"/>
+                <rect class="map__drive" x="512" y="161" width="34" height="62"/>
+                <path class="map__house" d="M392 208H512V250H476V318H392Z"/>
+                <!-- the family house: driveway, garage, house, fence with a side gate and a back gate -->
+                <rect class="map__drive" x="274" y="161" width="38" height="52"/>
+                <path class="map__drive" d="M196 161H206V213H196Z"/>
+                <path class="map__fence" d="M111 161V256M111 280V439H200M224 439H330"/>
+                <path class="map__gate" d="M111 256V280M200 439H224"/>
+                <path class="map__house map__house--home" d="M168 213H316V268H262V327H168Z"/>
+                <g class="map__tree"><circle cx="140" cy="190" r="12"/><circle cx="300" cy="390" r="16"/><circle cx="262" cy="410" r="11"/><circle cx="140" cy="420" r="12"/><circle cx="560" cy="380" r="18"/><circle cx="430" cy="410" r="14"/><circle cx="372" cy="190" r="11"/><circle cx="28" cy="40" r="14"/><circle cx="560" cy="560" r="15"/><circle cx="420" cy="50" r="10"/></g>
+                <g class="map__place">
+                  <text x="293" y="190">Driveway</text>
+                  <text x="212" y="430">Back gate</text>
+                  <text transform="translate(124 268) rotate(-90)">Side gate</text>
+                </g>
+                <g class="map__street">
+                  <text x="470" y="132.5">Maple St</text>
+                  <text x="470" y="467.5">Cedar St</text>
+                  <text transform="translate(82.5 400) rotate(-90)">Birch Ave</text>
+                </g>
+                <!-- camera views: none overlap, and none reach past the street -->
+                <path class="map__fov" d="M292 213L236.1 130.1A100 100 0 0 1 347.9 130.1Z" data-cam="1" data-x="292" data-y="213" data-dir="-90" data-half="34" data-range="100"/>
+                <path class="map__fov is-active" d="M212 327L287.0 456.9A150 150 0 0 1 137.0 456.9Z" data-cam="2" data-x="212" data-y="327" data-dir="90" data-half="30" data-range="150"/>
+                <path class="map__fov" d="M168 268L84.5 333.3A106 106 0 0 1 84.5 202.7Z" data-cam="3" data-x="168" data-y="268" data-dir="180" data-half="38" data-range="106"/>
+                <!-- the car's route: dashed where no camera sees it, solid where one does -->
+                <path class="map__route" id="map-route" d="M620 456H106A12 12 0 0 1 94 444V156A12 12 0 0 1 106 144H620"/>
+                <path class="map__seen" d="M286 456L138 456M94 326L94 210M246 144L338 144"/>
+                <g class="map__cam" data-cam="1" transform="translate(292 213)"><circle r="11"/><text y="4.5" text-anchor="middle">1</text></g>
+                <g class="map__cam is-active" data-cam="2" transform="translate(212 327)"><circle r="11"/><text y="4.5" text-anchor="middle">2</text></g>
+                <g class="map__cam" data-cam="3" transform="translate(168 268)"><circle r="11"/><text y="4.5" text-anchor="middle">3</text></g>
+                <!-- the car (shown at the back gate, where camera 2 sees it; main.js drives it round the house) -->
+                <g class="map__car" transform="translate(212 456)">
+                  <g class="map__car-body" transform="rotate(180)">
+                    <rect x="-12.5" y="-6.5" width="25" height="13" rx="3.5"/>
+                    <path class="map__car-glass" d="M3.5 -5h4v10h-4zM-10 -4.5h3v9h-3z"/>
+                  </g>
+                  <rect class="box box--live map__spot" x="-17" y="-17" width="34" height="34"/>
+                </g>
+                <g class="tag tag--live map__spot map__tag" transform="translate(195 415)">
+                  <rect width="92" height="24" rx="2"/>
+                  <text x="8" y="17">car ID:12</text>
+                </g>
+                <g class="map__scale" transform="translate(428 566)">
+                  <rect width="160" height="24" rx="4"/>
+                  <text x="10" y="16.5">20 m</text>
+                  <path d="M48 8v8h100V8"/>
+                </g>
+              </g>
+              <rect class="map__edge" x="0.75" y="0.75" width="598.5" height="598.5" rx="17.25"/>
+            </svg>
+            <figcaption>Solid where a camera sees the car, dashed where none does. Same car, ID:12, at every gate.</figcaption>
+          </figure>
+        </section>
+
         <!-- Feature: chat -->
-        <section class="feature" aria-labelledby="f-chat">
+        <section class="feature feature--flip" aria-labelledby="f-chat">
           <div class="feature__text">
             <h3 id="f-chat">Ask it. Don’t scrub through footage.</h3>
             <p>
@@ -368,7 +444,7 @@
               <div class="msg">
                 <span class="avatar avatar--bot" aria-hidden="true"></span>
                 <div>
-                  <p class="msg__who">Aiscopy</p>
+                  <p class="msg__who">Security Agent</p>
                   <p>One person: dark jacket, grey backpack. They crossed the driveway on camera&nbsp;1 at 10:41 and reached the back gate on camera&nbsp;2 at 10:42.</p>
                 </div>
               </div>
@@ -382,7 +458,7 @@
               <div class="msg">
                 <span class="avatar avatar--bot" aria-hidden="true"></span>
                 <div>
-                  <p class="msg__who">Aiscopy</p>
+                  <p class="msg__who">Security Agent</p>
                   <p><span class="ok">Alert #1 added.</span></p>
                 </div>
               </div>
@@ -390,7 +466,7 @@
               <div class="msg msg--alert">
                 <span class="avatar avatar--bot" aria-hidden="true"></span>
                 <div>
-                  <p class="msg__who">Aiscopy</p>
+                  <p class="msg__who">Security Agent</p>
                   <p><strong>Alert #1, camera&nbsp;1.</strong> The person in the dark jacket with the grey backpack is back, heading to the front door.</p>
                 </div>
               </div>
@@ -399,8 +475,8 @@
         </section>
 
         <!-- Stack -->
-        <section class="stack" aria-labelledby="aiscopy-stack">
-          <h3 id="aiscopy-stack" class="block-title block-title--small">Built with</h3>
+        <section class="stack" aria-labelledby="sa-stack">
+          <h3 id="sa-stack" class="block-title block-title--small">Built with</h3>
           <ul class="chips">
             <li>Python</li>
             <li>OpenCV</li>
@@ -417,15 +493,14 @@
       </article>
 
       <!-- ============================================================ -->
-      <!-- Project: Tennis Robot Vision (Waltair Robotics)               -->
+      <!-- Project: Tennis Robot Vision                                 -->
       <!-- Resume link: https://micheledamian.github.io/#tennis-robot    -->
       <!-- ============================================================ -->
-      <article class="project" id="tennis-robot" data-short="Tennis Robot Vision" aria-labelledby="waltair-title">
+      <article class="project" id="tennis-robot" data-short="Tennis Robot Vision" aria-labelledby="tr-title">
 
         <header class="section-head">
           <p class="project__name">Tennis Robot Vision</p>
-          <p class="project__meta">Waltair Robotics, Senior Computer Vision Engineer, September 2023 to December 2024</p>
-          <h2 id="waltair-title">It knows where the ball will bounce, before it does.</h2>
+          <h2 id="tr-title">It knows where the ball will bounce, before it does.</h2>
           <p class="lede">
             One camera and a small edge computer follow a tennis ball at 50 frames a second,
             rebuild its flight in 3D, and call the bounce to within 5 inches.
@@ -492,8 +567,8 @@
         </figure>
 
         <!-- Results -->
-        <section class="results" aria-labelledby="waltair-results">
-          <h3 id="waltair-results" class="block-title">The results</h3>
+        <section class="results" aria-labelledby="tr-results">
+          <h3 id="tr-results" class="block-title">The results</h3>
           <ul class="stats">
             <li class="stat">
               <p class="stat__value">5&nbsp;in</p>
@@ -621,8 +696,8 @@
         </section>
 
         <!-- Stack -->
-        <section class="stack" aria-labelledby="waltair-stack">
-          <h3 id="waltair-stack" class="block-title block-title--small">Built with</h3>
+        <section class="stack" aria-labelledby="tr-stack">
+          <h3 id="tr-stack" class="block-title block-title--small">Built with</h3>
           <!-- TODO: add or remove tools you used on this project -->
           <ul class="chips">
             <li>Python</li>
@@ -645,7 +720,7 @@
   </main>
 
   <footer class="footer">
-    <p>© <span id="year">2026</span> Michele Damian</p>
+    <p>© Michele Damian</p>
     <a href="https://github.com/MicheleDamian" data-umami-event="github-click">GitHub</a>
   </footer>
 </body>
