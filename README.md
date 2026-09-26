@@ -27,7 +27,9 @@ outline, so any you miss are obvious on the page.
    - Speed-up of the custom detector over YOLO on the same device `X×`
    - How early the bounce is predicted `X ms`
 4. **Videos**: in each project, replace the `.film__placeholder` block with the `<video>` or
-   YouTube `<iframe>` snippet sitting in the comment right above it.
+   YouTube `<iframe>` snippet sitting in the comment right above it. Security Agent has two
+   4:3 camera videos, stacked, with the chat on a phone beside them; the phone shows the chat
+   as HTML, or you can drop in a portrait screen recording (see the comment above `.phone`).
 5. **Security Agent chat example**: match the person's description and times to the final video.
 6. **Tennis Robot Vision "Built with"**: add or remove tools so the list matches what you used.
 7. **Domain**: if you don't use `micheledamian.github.io`, update the canonical URL, the

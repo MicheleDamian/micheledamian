@@ -93,45 +93,84 @@
           </p>
         </header>
 
-        <!-- Demo film -->
+        <!-- Demo film: two camera videos (4:3) stacked, the chat on a phone beside them -->
         <figure class="film">
-          <div class="film__frame">
-
-            <!--
-              TODO: replace the whole .film__placeholder block with ONE of these once the video is ready.
-
-              Option A, self-hosted (keep the MP4 under ~20 MB: 720p or 1080p, H.264):
-              <video controls playsinline preload="none"
-                     poster="assets/img/security-agent-poster.jpg"
-                     data-track="security-agent-video-play">
-                <source src="assets/video/security-agent-demo.mp4" type="video/mp4">
-              </video>
-
-              Option B, unlisted YouTube video in privacy-enhanced mode:
-              <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0"
-                      title="Security Agent demo: cross-camera re-identification and chat alerts"
-                      loading="lazy"
-                      allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
-                      allowfullscreen></iframe>
-            -->
-            <div class="film__placeholder" role="img" aria-label="Demo film in production: two camera views and a chat window, side by side">
-              <div class="pane pane--cam">
+          <div class="film__split">
+          <div class="film__cams">
+            <div class="film__frame film__frame--cam">
+              <!--
+                TODO: replace the .film__placeholder below with camera 1's video (4:3).
+                Self-hosted (keep the MP4 under ~20 MB: 960x720 or 1440x1080, H.264):
+                <video controls playsinline preload="none"
+                       poster="assets/img/security-agent-cam1-poster.jpg"
+                       data-track="security-agent-video-play">
+                  <source src="assets/video/security-agent-cam1.mp4" type="video/mp4">
+                </video>
+                Or an unlisted YouTube video in privacy-enhanced mode:
+                <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0"
+                        title="Security Agent demo, camera 1" loading="lazy"
+                        allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
+                        allowfullscreen></iframe>
+              -->
+              <div class="film__placeholder film__placeholder--single pane" role="img" aria-label="Camera 1 video, in production">
                 <span class="pane__label">Camera 1</span>
                 <span class="pane__box"></span>
+                <p class="film__soon">Video in production</p>
               </div>
-              <div class="pane pane--cam">
+            </div>
+            <div class="film__frame film__frame--cam">
+              <!--
+                TODO: replace the .film__placeholder below with camera 2's video (4:3).
+                Self-hosted (keep the MP4 under ~20 MB: 960x720 or 1440x1080, H.264):
+                <video controls playsinline preload="none"
+                       poster="assets/img/security-agent-cam2-poster.jpg"
+                       data-track="security-agent-video-play">
+                  <source src="assets/video/security-agent-cam2.mp4" type="video/mp4">
+                </video>
+                Or an unlisted YouTube video in privacy-enhanced mode:
+                <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0"
+                        title="Security Agent demo, camera 2" loading="lazy"
+                        allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
+                        allowfullscreen></iframe>
+              -->
+              <div class="film__placeholder film__placeholder--single pane" role="img" aria-label="Camera 2 video, in production">
                 <span class="pane__label">Camera 2</span>
                 <span class="pane__box pane__box--b"></span>
+                <p class="film__soon">Video in production</p>
               </div>
-              <div class="pane pane--chat">
-                <span class="pane__label">Chat</span>
-                <span class="pane__line"></span>
-                <span class="pane__line pane__line--short"></span>
-                <span class="pane__line"></span>
-              </div>
-              <p class="film__soon">Demo film in production</p>
             </div>
+          </div>
 
+          <!-- The chat, as it looks on a phone. To use a screen recording instead, replace
+               .phone__screen's contents with a <video> (portrait, about 9:19.5). -->
+          <div class="phone" role="img" aria-label="The chat on a phone: asking who the cameras saw, setting an alert, and receiving it">
+            <div class="phone__screen">
+              <p class="phone__bar">Security Agent</p>
+              <div class="chat chat--phone">
+                <div class="msg msg--you">
+                  <span class="avatar avatar--you" aria-hidden="true">You</span>
+                  <div><p><span class="cmd">/ask</span> who did the cameras see in the last 5 minutes?</p></div>
+                </div>
+                <div class="msg">
+                  <span class="avatar avatar--bot" aria-hidden="true"></span>
+                  <div><p>One person: dark jacket, grey backpack. Driveway on camera&nbsp;1 at 10:41, back gate on camera&nbsp;2 at 10:42.</p></div>
+                </div>
+                <div class="msg msg--you">
+                  <span class="avatar avatar--you" aria-hidden="true">You</span>
+                  <div><p><span class="cmd">/alert add</span> tell me when this person comes back</p></div>
+                </div>
+                <div class="msg">
+                  <span class="avatar avatar--bot" aria-hidden="true"></span>
+                  <div><p><span class="ok">Alert #1 added.</span></p></div>
+                </div>
+                <p class="chat__gap">18 minutes later</p>
+                <div class="msg msg--alert">
+                  <span class="avatar avatar--bot" aria-hidden="true"></span>
+                  <div><p><strong>Alert #1, camera&nbsp;1.</strong> The person with the grey backpack is back, heading to the front door.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
 
           <figcaption class="film__caption">
