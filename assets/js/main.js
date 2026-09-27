@@ -17,6 +17,29 @@
   });
 
   // ---------------------------------------------------------------
+  // Short looping clips (<video data-loop>): play only while on screen.
+  // With reduced motion, don't autoplay; show the poster and controls.
+  // ---------------------------------------------------------------
+  const loops = document.querySelectorAll("video[data-loop]");
+  if (loops.length) {
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const play = (v) => { const p = v.play(); if (p) p.catch(() => {}); };
+    loops.forEach((v) => {
+      if (still) {
+        v.removeAttribute("autoplay");
+        v.pause();
+        v.controls = true;
+      }
+    });
+    if (!still && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) e.isIntersecting ? play(e.target) : e.target.pause();
+      });
+      loops.forEach((v) => io.observe(v));
+    }
+  }
+
+  // ---------------------------------------------------------------
   // House map: drive the car round the house, lighting up each camera's
   // view while the car is inside it. The tracking box and tag show only
   // while some camera sees it. Runs only while the map is on screen; with

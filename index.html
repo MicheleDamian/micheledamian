@@ -507,61 +507,25 @@
           </p>
         </header>
 
-        <!-- Demo film -->
+        <!-- Demo film: 1396x388, 15 fps (half the original frame rate, so the ball is easier to
+             follow), about 5 seconds, looping. main.js pauses it off screen, and with reduced
+             motion shows the still frame with controls instead of autoplaying. -->
         <figure class="film">
-          <div class="film__frame">
-
-            <!--
-              TODO: replace the whole .film__placeholder block with ONE of these once the video is ready.
-
-              Option A, self-hosted (keep the MP4 under ~20 MB: 720p or 1080p, H.264):
-              <video controls playsinline preload="none"
-                     poster="assets/img/tennis-robot-poster.jpg"
-                     data-track="tennis-robot-video-play">
-                <source src="assets/video/tennis-robot-demo.mp4" type="video/mp4">
-              </video>
-
-              Option B, unlisted YouTube video in privacy-enhanced mode:
-              <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0"
-                      title="Tennis Robot Vision demo: tennis ball tracking with a live court map"
-                      loading="lazy"
-                      allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
-                      allowfullscreen></iframe>
-            -->
-            <div class="film__placeholder film__placeholder--single" role="img" aria-label="Demo film in production: a tennis court seen from one camera, with an overhead court map in the corner">
-              <svg class="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                <rect width="1600" height="900" fill="url(#sky)"/>
-                <g class="scene__court">
-                  <path d="M170 840 L1430 840 L1030 300 L570 300 Z"/>
-                  <path d="M327 840 L627 300 M1273 840 L973 300"/>
-                  <path d="M258 721 L1342 721"/>
-                  <path d="M520 368 L1080 368 M424 604 L1176 604"/>
-                  <path d="M800 368 L800 604"/>
-                </g>
-                <path class="scene__net" d="M455 470 L1145 470"/>
-                <circle cx="930" cy="390" r="7" class="scene__ball"/>
-                <rect class="box box--live" x="916" y="376" width="28" height="28"/>
-                <!-- overhead court map -->
-                <g transform="translate(1380 60)">
-                  <rect width="170" height="340" rx="8" class="scene__map"/>
-                  <g class="scene__court scene__court--map">
-                    <rect x="20" y="20" width="130" height="300"/>
-                    <path d="M36 20 V320 M134 20 V320 M20 170 H150 M36 101 H134 M36 239 H134 M85 101 V239"/>
-                  </g>
-                  <circle cx="104" cy="126" r="7" class="scene__ball scene__ball--map"/>
-                </g>
-              </svg>
-              <p class="film__soon">Demo film in production</p>
-            </div>
-
+          <div class="film__frame film__frame--wide">
+            <video autoplay loop muted playsinline preload="auto" data-loop
+                   poster="assets/img/tennis-robot-poster.jpg"
+                   aria-label="Demo: one camera tracks a tennis ball on the near half of the court, predicts where it will bounce, and plots it on top and side views of the court">
+              <source src="assets/video/tennis-robot-demo.mp4" type="video/mp4">
+            </video>
           </div>
 
           <figcaption class="film__caption">
-            <p class="film__title">What the demo shows</p>
+            <p class="film__title">What the demo shows <span class="film__note">Half speed, looping</span></p>
             <ol class="chapters">
-              <li>A player rallies on a real court, filmed by a single camera.</li>
-              <li>The ball is found and followed in every frame, at full speed.</li>
-              <li>An overhead map in the corner plots where the ball is on the court, live.</li>
+              <li>A shot comes over the net, and the ball is found in the first frames it appears in (yellow ring).</li>
+              <li>The filtered track places it in 3D: the blue marker is the spot on the court right under the ball, the line its height.</li>
+              <li>While the ball is still in the air, the predicted bounce appears (orange) and firms up with every frame.</li>
+              <li>The panel in the corner plots the same track live, from above and from the side.</li>
             </ol>
           </figcaption>
         </figure>
@@ -599,8 +563,30 @@
           </ul>
         </section>
 
+        <!-- Feature: court keypoints, the basis of the self-calibration -->
+        <section class="feature" aria-labelledby="f-court">
+          <div class="feature__text">
+            <h3 id="f-court">First, it finds the court.</h3>
+            <p>
+              A detector picks out where the court lines meet. Fitting the known shape of a regulation
+              court to those points puts every corner exactly where the geometry says it must be, even
+              where a detection is weak or missing.
+            </p>
+            <p>
+              From those corners it solves where the camera is, which way it points and how its lens
+              bends the image. Everything after, from the ball’s position to the bounce, is measured on
+              the court itself.
+            </p>
+          </div>
+          <figure class="feature__visual">
+            <img class="shot" src="assets/img/tennis-court-keypoints.jpg" width="1280" height="720" loading="lazy"
+                 alt="Feature map from the court detector: bright spots where the court lines meet, each with a green dot where the fitted court geometry places that corner">
+            <figcaption>White: corners the detector found. Green: where the court’s geometry puts them.</figcaption>
+          </figure>
+        </section>
+
         <!-- Feature: tiny object -->
-        <section class="feature" aria-labelledby="f-tiny">
+        <section class="feature feature--flip" aria-labelledby="f-tiny">
           <div class="feature__text">
             <h3 id="f-tiny">It finds a ball a few pixels wide.</h3>
             <p>
@@ -653,7 +639,7 @@
         </section>
 
         <!-- Feature: 3D from one camera -->
-        <section class="feature feature--flip" aria-labelledby="f-3d">
+        <section class="feature" aria-labelledby="f-3d">
           <div class="feature__text">
             <h3 id="f-3d">One camera. The whole court in 3D.</h3>
             <p>
