@@ -540,25 +540,27 @@
             </li>
             <li class="stat">
               <p class="stat__value">50&nbsp;fps</p>
-              <p class="stat__text">On an NVIDIA Jetson Nano, while the same processor records video.</p>
+              <p class="stat__text">Ball detection on full 1080p frames, on an NVIDIA Jetson Nano. The rest of the pipeline runs only as fast as it needs to.</p>
             </li>
             <li class="stat">
-              <!-- TODO: speed-up of the custom detector over YOLO on the same device -->
-              <p class="stat__value"><span class="ph">X</span>×</p>
-              <p class="stat__text">Faster than YOLO on the same device, and more accurate on tennis balls.</p>
+              <!-- Estimate, not a benchmark: the smallest YOLOv5 (n) at the same 1920x1088 input on a
+                   Jetson Nano runs at roughly 5 fps; downscaling to 640 px would shrink a far ball
+                   to about a pixel. -->
+              <p class="stat__value">10×</p>
+              <p class="stat__text">Faster than the smallest YOLOv5 would run at the same 1080p resolution, on the same device.</p>
             </li>
             <li class="stat">
-              <!-- TODO: how early the bounce is predicted, in ms (typical or median) -->
-              <p class="stat__value"><span class="ph">X</span>&nbsp;ms</p>
-              <p class="stat__text">Before the ball lands. The call is made while it is still in the air.</p>
+              <p class="stat__value">200&nbsp;ms</p>
+              <p class="stat__text">Before the ball lands, on average. The bounce is called while the ball is still in the air.</p>
             </li>
             <li class="stat">
               <p class="stat__value">0</p>
               <p class="stat__text">Manual calibration steps. The procedure it replaced was done by hand.</p>
             </li>
             <li class="stat">
-              <p class="stat__value">5</p>
-              <p class="stat__text">People on the data team I directed, building tennis datasets that had no public equivalent.</p>
+              <!-- TODO: pick one of the metrics suggested in the chat, e.g. calibration time -->
+              <p class="stat__value"><span class="ph">X</span>&nbsp;s</p>
+              <p class="stat__text">From switching the camera on to calibrated, with no target and nobody on court.</p>
             </li>
           </ul>
         </section>
@@ -566,16 +568,16 @@
         <!-- Feature: court keypoints, the basis of the self-calibration -->
         <section class="feature" aria-labelledby="f-court">
           <div class="feature__text">
-            <h3 id="f-court">First, it finds the court.</h3>
+            <h3 id="f-court">First, it calibrates itself.</h3>
             <p>
-              A detector picks out where the court lines meet. Fitting the known shape of a regulation
-              court to those points puts every corner exactly where the geometry says it must be, even
-              where a detection is weak or missing.
+              Put the camera anywhere behind the baseline and it works out, on its own, exactly where
+              it is, which way it points and how its lens bends the image. No calibration target, no
+              measuring, nobody on court.
             </p>
             <p>
-              From those corners it solves where the camera is, which way it points and how its lens
-              bends the image. Everything after, from the ball’s position to the bounce, is measured on
-              the court itself.
+              The court is the calibration target. A detector finds where the lines meet, the known
+              geometry of a regulation court pins down each corner, even where a detection is weak or
+              missing, and the camera’s position and lens distortion are solved from them.
             </p>
           </div>
           <figure class="feature__visual">
@@ -648,7 +650,8 @@
               included, so the flight path can be carried forward to the bounce.
             </p>
             <p>
-              Setting up the camera used to be a manual calibration job. It now calibrates itself.
+              Because the camera has calibrated itself against the court, every one of those
+              measurements is in real court coordinates, ready to compare with the lines.
             </p>
           </div>
           <figure class="feature__visual">
