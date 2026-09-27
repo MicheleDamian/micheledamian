@@ -543,24 +543,26 @@
               <p class="stat__text">Ball detection on full 1080p frames, on an NVIDIA Jetson Nano. The rest of the pipeline runs only as fast as it needs to.</p>
             </li>
             <li class="stat">
-              <!-- Estimate, not a benchmark: the smallest YOLOv5 (n) at the same 1920x1088 input on a
-                   Jetson Nano runs at roughly 5 fps; downscaling to 640 px would shrink a far ball
-                   to about a pixel. -->
-              <p class="stat__value">10×</p>
-              <p class="stat__text">Faster than the smallest YOLOv5 would run at the same 1080p resolution, on the same device.</p>
+              <!-- Estimate, not a benchmark: YOLOv5s at the full 1920x1088 input (it can't be downscaled
+                   without losing the ball) runs at roughly 2-3 fps on a Jetson Nano with TensorRT FP16,
+                   against 50 fps here. -->
+              <p class="stat__value">20×</p>
+              <p class="stat__text">Faster than YOLOv5 at the same full 1080p resolution, on the same device.</p>
             </li>
             <li class="stat">
               <p class="stat__value">200&nbsp;ms</p>
               <p class="stat__text">Before the ball lands, on average. The bounce is called while the ball is still in the air.</p>
             </li>
             <li class="stat">
-              <p class="stat__value">0</p>
-              <p class="stat__text">Manual calibration steps. The procedure it replaced was done by hand.</p>
+              <p class="stat__value">2&nbsp;s</p>
+              <p class="stat__text">From switching on to calibrated and ready. The procedure it replaced was done by hand.</p>
             </li>
             <li class="stat">
-              <!-- TODO: pick one of the metrics suggested in the chat, e.g. calibration time -->
-              <p class="stat__value"><span class="ph">X</span>&nbsp;s</p>
-              <p class="stat__text">From switching the camera on to calibrated, with no target and nobody on court.</p>
+              <!-- The ball is ~225 px / distance-in-ft wide at 1080p (2-3 px at 90 ft). YOLOv5 needs about
+                   5-6 px (4x stem downsampling, stride-8 smallest head), i.e. within ~40 ft at full
+                   resolution, and ~12-15 ft if downscaled to 640 px. -->
+              <p class="stat__value">90&nbsp;ft</p>
+              <p class="stat__text">Detection range: all the way to the far baseline, where the ball is 2–3 pixels wide. YOLOv5 loses it beyond about 40&nbsp;ft.</p>
             </li>
           </ul>
         </section>
@@ -570,9 +572,9 @@
           <div class="feature__text">
             <h3 id="f-court">First, it calibrates itself.</h3>
             <p>
-              Put the camera anywhere behind the baseline and it works out, on its own, exactly where
-              it is, which way it points and how its lens bends the image. No calibration target, no
-              measuring, nobody on court.
+              Put the camera anywhere behind the baseline and, in about two seconds, it works out on its
+              own exactly where it is, which way it points and how its lens bends the image. No
+              calibration target, no measuring, nobody on court.
             </p>
             <p>
               The court is the calibration target. A detector finds where the lines meet, the known
