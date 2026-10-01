@@ -93,24 +93,24 @@
           </p>
         </header>
 
-        <!-- Demo film: 1920x720 (8:3), 30 fps, H.264, about 1 minute, no audio. Camera 1 on the left,
-             camera 2 on the right, the chat in the middle. -->
+        <!-- Demo film: 1920x720 (8:3), 30 fps, H.264, about 1 minute, no audio, looping. Camera 1 on
+             the left, camera 2 on the right, the chat in the middle. main.js pauses it off screen,
+             and with reduced motion shows the still frame with controls instead of autoplaying. -->
         <figure class="film">
           <div class="film__frame film__frame--sa">
-            <video controls playsinline preload="metadata"
+            <video autoplay loop muted playsinline preload="auto" data-loop
                    poster="assets/img/security-agent-poster.jpg"
-                   data-track="security-agent-video-play"
                    aria-label="Demo: two cameras side by side with the chat between them. People are tracked across both cameras, a question in chat is answered, an alert is set, and it fires when the person comes back">
               <source src="assets/video/security-agent-demo.mp4" type="video/mp4">
             </video>
           </div>
 
           <figcaption class="film__caption">
-            <p class="film__title">What the demo shows <span class="film__note">Camera&nbsp;1 left, camera&nbsp;2 right, chat in the middle</span></p>
+            <p class="film__title">What the demo shows <span class="film__note">Camera&nbsp;1 left, camera&nbsp;2 right, chat in the middle, looping</span></p>
             <ol class="chapters">
-              <li>A person crosses camera&nbsp;2, then camera&nbsp;1. Each camera picks them up and tracks them.</li>
+              <li>A man crosses camera&nbsp;2, then camera&nbsp;1. Each camera picks him up and tracks him.</li>
               <li>In chat: “have you seen anybody in the last couple of minutes?” The answer describes the two people seen, with what they wore, where and when.</li>
-              <li>An alert is set for one of them: “tell me when the man … comes back.”</li>
+              <li>An alert is set for one of them: “tell me when the man with a black cap comes back.”</li>
               <li>He comes back on camera&nbsp;1 and the alert fires. He then crosses camera&nbsp;2, and it fires again from there.</li>
             </ol>
           </figcaption>
@@ -419,7 +419,7 @@
                 <span class="avatar avatar--you" aria-hidden="true">You</span>
                 <div>
                   <p class="msg__who">You</p>
-                  <p><span class="cmd">/alert add</span> tell me when the man in the black cap comes back</p>
+                  <p><span class="cmd">/alert add</span> tell me when the man with a black cap comes back</p>
                 </div>
               </div>
               <div class="msg">
@@ -434,7 +434,7 @@
                 <span class="avatar avatar--bot" aria-hidden="true"></span>
                 <div>
                   <p class="msg__who">Security Agent</p>
-                  <p><strong>Alert #1, camera&nbsp;1.</strong> The man in the black cap is back, walking along the street, left to right.</p>
+                  <p><strong>Alert #1, camera&nbsp;1.</strong> The man with the black cap is back, walking along the street, left to right.</p>
                 </div>
               </div>
             </div>
