@@ -93,57 +93,25 @@
           </p>
         </header>
 
-        <!-- Demo film: one video, two camera views (4:3) stacked on the left and the chat on a
-             phone (portrait) on the right. Export it at 9:8, e.g. 1620x1440: each camera 960x720,
-             the phone column 660x1440. -->
+        <!-- Demo film: 1920x720 (8:3), 30 fps, H.264, about 1 minute, no audio. Camera 1 on the left,
+             camera 2 on the right, the chat in the middle. -->
         <figure class="film">
-          <div class="film__frame film__frame--split">
-
-            <!--
-              TODO: replace the whole .film__placeholder block with ONE of these once the video is ready.
-
-              Option A, self-hosted (keep the MP4 under ~20 MB, H.264):
-              <video controls playsinline preload="none"
-                     poster="assets/img/security-agent-poster.jpg"
-                     data-track="security-agent-video-play">
-                <source src="assets/video/security-agent-demo.mp4" type="video/mp4">
-              </video>
-
-              Option B, unlisted YouTube video in privacy-enhanced mode:
-              <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0"
-                      title="Security Agent demo: two cameras and the chat on a phone"
-                      loading="lazy"
-                      allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
-                      allowfullscreen></iframe>
-            -->
-            <div class="film__placeholder film__placeholder--split" role="img" aria-label="Demo film in production: two camera views stacked, with the chat on a phone beside them">
-              <div class="pane pane--cam">
-                <span class="pane__label">Camera 1</span>
-                <span class="pane__box"></span>
-              </div>
-              <div class="pane pane--cam">
-                <span class="pane__label">Camera 2</span>
-                <span class="pane__box pane__box--b"></span>
-              </div>
-              <div class="pane pane--phone">
-                <span class="pane__label">Chat</span>
-                <span class="pane__line"></span>
-                <span class="pane__line pane__line--short"></span>
-                <span class="pane__line"></span>
-                <span class="pane__line pane__line--short"></span>
-              </div>
-              <p class="film__soon">Demo film in production</p>
-            </div>
-
+          <div class="film__frame film__frame--sa">
+            <video controls playsinline preload="metadata"
+                   poster="assets/img/security-agent-poster.jpg"
+                   data-track="security-agent-video-play"
+                   aria-label="Demo: two cameras side by side with the chat between them. People are tracked across both cameras, a question in chat is answered, an alert is set, and it fires when the person comes back">
+              <source src="assets/video/security-agent-demo.mp4" type="video/mp4">
+            </video>
           </div>
 
           <figcaption class="film__caption">
-            <p class="film__title">What the demo shows</p>
+            <p class="film__title">What the demo shows <span class="film__note">Camera&nbsp;1 left, camera&nbsp;2 right, chat in the middle</span></p>
             <ol class="chapters">
-              <li>A person walks through camera&nbsp;1’s view.</li>
-              <li>Camera&nbsp;2 picks them up and recognizes them as the same person.</li>
-              <li>In chat, someone asks who the cameras saw in the last few minutes. The answer names that person.</li>
-              <li>They set an alert: “tell me when this person comes back.” Camera&nbsp;1 sees them again, and the alert fires.</li>
+              <li>A person crosses camera&nbsp;2, then camera&nbsp;1. Each camera picks them up and tracks them.</li>
+              <li>In chat: “have you seen anybody in the last couple of minutes?” The answer describes the two people seen, with what they wore, where and when.</li>
+              <li>An alert is set for one of them: “tell me when the man … comes back.”</li>
+              <li>He comes back on camera&nbsp;1 and the alert fires. He then crosses camera&nbsp;2, and it fires again from there.</li>
             </ol>
           </figcaption>
         </figure>
@@ -166,9 +134,8 @@
               <p class="stat__text">Top-1 re-identification across cameras that don’t overlap, over <span class="ph">N</span> real crossings.</p>
             </li>
             <li class="stat">
-              <!-- TODO: time from the person reappearing on camera to the alert in chat -->
-              <p class="stat__value"><span class="ph">X</span>&nbsp;s</p>
-              <p class="stat__text">From a person reappearing on camera to the alert in chat.</p>
+              <p class="stat__value">&lt;&nbsp;10&nbsp;s</p>
+              <p class="stat__text">From a person first appearing on camera to the alert arriving in chat.</p>
             </li>
             <li class="stat">
               <p class="stat__value">Capped</p>
@@ -432,27 +399,27 @@
             </p>
           </div>
           <figure class="feature__visual">
-            <!-- TODO: once the film is final, match the descriptions and times below to it -->
+            <!-- Follows the demo film's conversation, without its place names -->
             <div class="chat" role="img" aria-label="Example chat: asking who the cameras saw, setting an alert, and receiving it">
               <div class="msg msg--you">
                 <span class="avatar avatar--you" aria-hidden="true">You</span>
                 <div>
                   <p class="msg__who">You</p>
-                  <p><span class="cmd">/ask</span> who did the cameras see in the last 5 minutes?</p>
+                  <p><span class="cmd">/ask</span> have you seen anybody in the last couple of minutes?</p>
                 </div>
               </div>
               <div class="msg">
                 <span class="avatar avatar--bot" aria-hidden="true"></span>
                 <div>
                   <p class="msg__who">Security Agent</p>
-                  <p>One person: dark jacket, grey backpack. They crossed the driveway on camera&nbsp;1 at 10:41 and reached the back gate on camera&nbsp;2 at 10:42.</p>
+                  <p>Two people. One in a light top, blue jeans and dark shoes. The other, a man in a black cap, dark t-shirt and shorts, passed camera&nbsp;2 and then camera&nbsp;1 at 12:51.</p>
                 </div>
               </div>
               <div class="msg msg--you">
                 <span class="avatar avatar--you" aria-hidden="true">You</span>
                 <div>
                   <p class="msg__who">You</p>
-                  <p><span class="cmd">/alert add</span> tell me when this person comes back</p>
+                  <p><span class="cmd">/alert add</span> tell me when the man in the black cap comes back</p>
                 </div>
               </div>
               <div class="msg">
@@ -462,12 +429,12 @@
                   <p><span class="ok">Alert #1 added.</span></p>
                 </div>
               </div>
-              <p class="chat__gap">18 minutes later</p>
+              <p class="chat__gap">A minute later</p>
               <div class="msg msg--alert">
                 <span class="avatar avatar--bot" aria-hidden="true"></span>
                 <div>
                   <p class="msg__who">Security Agent</p>
-                  <p><strong>Alert #1, camera&nbsp;1.</strong> The person in the dark jacket with the grey backpack is back, heading to the front door.</p>
+                  <p><strong>Alert #1, camera&nbsp;1.</strong> The man in the black cap is back, walking along the street, left to right.</p>
                 </div>
               </div>
             </div>
