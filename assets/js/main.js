@@ -6,6 +6,19 @@
     } catch (_) { /* ignore */ }
   };
 
+  // Record a page view (e.g. "/#tennis-robot", keeping any ?utm_campaign) the first time a reader reaches each project.
+  // On a one-page site Umami otherwise sees a single page view per visit, so every visit
+  // reads as 0 s long and a bounce. Retries for a few seconds while Umami is still loading.
+  const pageview = (path, title, tries = 20) => {
+    try {
+      if (window.umami && typeof window.umami.track === "function") {
+        window.umami.track((props) => ({ ...props, url: path, title }));
+      } else if (tries > 0) {
+        setTimeout(() => pageview(path, title, tries - 1), 500);
+      }
+    } catch (_) { /* ignore */ }
+  };
+
   // Count the first play of each self-hosted video (add data-track="event-name" to the <video>)
   document.querySelectorAll("video[data-track]").forEach((video) => {
     let sent = false;
@@ -161,6 +174,10 @@
     else el.removeAttribute("aria-current");
   };
 
+  // Projects already recorded as page views. The one a visitor landed on (a short link or
+  // "#" link) is already in Umami's own first page view, so it isn't sent twice.
+  const viewed = new Set([location.hash.slice(1)]);
+
   let queued = false;
 
   const update = () => {
@@ -175,6 +192,11 @@
       item.fill.style.transform = `scaleY(${progress})`;
       if (item.nav) item.nav.style.setProperty("--progress", progress);
       if (r.top <= line && r.bottom > line) active = item;
+    }
+
+    if (active && !viewed.has(active.project.id)) {
+      viewed.add(active.project.id);
+      pageview("/" + location.search + "#" + active.project.id, active.project.dataset.short || active.project.id);
     }
 
     for (const item of items) {
