@@ -6,9 +6,8 @@
     } catch (_) { /* ignore */ }
   };
 
-  // Record a page view (e.g. "/#tennis-robot", keeping any ?utm_campaign) the first time a reader reaches each project.
-  // On a one-page site Umami otherwise sees a single page view per visit, so every visit
-  // reads as 0 s long and a bounce. Retries for a few seconds while Umami is still loading.
+  // Record a page view for a section of this one-page site (e.g. "/#tennis-robot", keeping any
+  // ?utm_campaign). Retries for a few seconds while Umami is still loading.
   const pageview = (path, title, tries = 20) => {
     try {
       if (window.umami && typeof window.umami.track === "function") {
@@ -174,9 +173,84 @@
     else el.removeAttribute("aria-current");
   };
 
-  // Projects already recorded as page views. The one a visitor landed on (a short link or
-  // "#" link) is already in Umami's own first page view, so it isn't sent twice.
-  const viewed = new Set([location.hash.slice(1)]);
+  // ---------------------------------------------------------------
+  // Time per section, for Umami. Sections: "top" (the opening screen) and each project.
+  // - A section counts once it has stayed under the reading line for 1 s, so sections
+  //   scrolled past on the way somewhere else don't count. Entering one records a page view
+  //   for it ("/", "/#security-agent", ...); the landing section is Umami's own page view.
+  // - Leaving a section records "time-<section>" with {seconds} (time with the page visible).
+  //   Umami shows the total, average and median seconds of each event.
+  // - Closing the page records "page-left" with {section, seconds}: the last section and the
+  //   total visible time of the visit. Some mobile browsers (e.g. iOS Safari) don't send it
+  //   when the app is swiped away; the section times are still sent when the page is hidden.
+  // ---------------------------------------------------------------
+  const DWELL = 1000;
+  const lastId = items[items.length - 1].project.id;
+  const secs = (ms) => Math.round(ms / 100) / 10;
+  const urlOf = (id) => "/" + location.search + (id === "top" ? "" : "#" + id);
+  const titleOf = (id) => id === "top" ? document.title : (document.getElementById(id).dataset.short || id);
+
+  let current = null;   // { id, since }: the section being read; since = null while hidden
+  let pending = null;   // { id, since, timer }: a section waiting out the 1 s
+  let total = 0;        // visible ms over the whole visit
+  let left = false;
+
+  const cancelPending = () => {
+    if (pending) clearTimeout(pending.timer);
+    pending = null;
+  };
+
+  const closeCurrent = (until) => {
+    if (!current || current.since === null) return;
+    const ms = until - current.since;
+    current.since = null;
+    total += ms;
+    if (ms >= 500) track("time-" + current.id, { seconds: secs(ms) });
+  };
+
+  const observe = (id) => {
+    if (!id || left || document.hidden) return;
+    if (!current) { current = { id, since: performance.now() }; return; }
+    if (id === current.id) { cancelPending(); return; }
+    if (pending && pending.id === id) return;
+    cancelPending();
+    const since = performance.now();
+    pending = {
+      id,
+      since,
+      timer: setTimeout(() => {
+        pending = null;
+        closeCurrent(since);
+        current = { id, since };
+        pageview(urlOf(id), titleOf(id));
+      }, DWELL),
+    };
+  };
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      cancelPending();
+      closeCurrent(performance.now());
+    } else if (current && !left) {
+      current.since = performance.now();
+      schedule();
+    }
+  });
+
+  window.addEventListener("pagehide", () => {
+    if (left) return;
+    left = true;
+    cancelPending();
+    closeCurrent(performance.now());
+    if (current) track("page-left", { section: current.id, seconds: secs(total) });
+  });
+
+  // Back from the browser's back/forward cache: the same visit carries on
+  window.addEventListener("pageshow", (e) => {
+    if (!e.persisted || !current) return;
+    left = false;
+    current.since = performance.now();
+  });
 
   let queued = false;
 
@@ -194,11 +268,6 @@
       if (r.top <= line && r.bottom > line) active = item;
     }
 
-    if (active && !viewed.has(active.project.id)) {
-      viewed.add(active.project.id);
-      pageview("/" + location.search + "#" + active.project.id, active.project.dataset.short || active.project.id);
-    }
-
     for (const item of items) {
       setActive(item.a, item === active);
       setActive(item.nav, item === active);
@@ -207,6 +276,9 @@
     // Only show the rail while the projects are on screen, not over the hero
     const w = work.getBoundingClientRect();
     rail.classList.toggle("is-visible", w.top < vh * 0.5 && w.bottom > vh * 0.5);
+
+    // Below the last project (the footer) still counts as reading it
+    observe(active ? active.project.id : w.top > line ? "top" : lastId);
   };
 
   const schedule = () => {
