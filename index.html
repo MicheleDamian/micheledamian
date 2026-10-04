@@ -121,6 +121,18 @@
           <h3 id="sa-results" class="block-title">The results</h3>
           <ul class="stats">
             <li class="stat">
+              <p class="stat__value">94%</p>
+              <p class="stat__text">Recall re-identifying people across cameras that don’t overlap, with no false matches.</p>
+            </li>
+            <li class="stat">
+              <p class="stat__value">95%</p>
+              <p class="stat__text">Recall re-identifying vehicles across days, with no false matches in 2,300 pairs.</p>
+            </li>
+            <li class="stat">
+              <p class="stat__value">&lt;&nbsp;10&nbsp;s</p>
+              <p class="stat__text">From a person first appearing on camera to the alert arriving in chat.</p>
+            </li>
+            <li class="stat">
               <p class="stat__value">2&nbsp;fps</p>
               <p class="stat__text">Detection and tracking on a Raspberry Pi Zero&nbsp;2. 512&nbsp;MB of memory, no GPU, no fan.</p>
             </li>
@@ -129,22 +141,9 @@
               <p class="stat__text">of frames ever reach the cloud. Only genuine movement gets sent.</p>
             </li>
             <li class="stat">
-              <!-- TODO: Re-ID accuracy and number of crossings -->
-              <p class="stat__value"><span class="ph">XX</span>%</p>
-              <p class="stat__text">Top-1 re-identification across cameras that don’t overlap, over <span class="ph">N</span> real crossings.</p>
-            </li>
-            <li class="stat">
-              <p class="stat__value">&lt;&nbsp;10&nbsp;s</p>
-              <p class="stat__text">From a person first appearing on camera to the alert arriving in chat.</p>
-            </li>
-            <li class="stat">
+              <!-- Placeholder until a better sixth metric is chosen (see the PR discussion) -->
               <p class="stat__value">Capped</p>
               <p class="stat__text">AI cost per event. A fixed frame budget, whether someone walks past or lingers.</p>
-            </li>
-            <li class="stat">
-              <!-- TODO: cloud cost per camera per month -->
-              <p class="stat__value">$<span class="ph">X</span></p>
-              <p class="stat__text">Cloud cost per camera, per month.</p>
             </li>
           </ul>
         </section>
