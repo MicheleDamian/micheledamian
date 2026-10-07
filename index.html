@@ -571,36 +571,32 @@
           </div>
           <figure class="feature__visual">
             <svg class="scene" viewBox="0 0 640 360" role="img" aria-labelledby="tiny-desc">
-              <title id="tiny-desc">A court seen from behind the near baseline; a ball close to the far baseline is detected and shown magnified, a few pixels across</title>
+              <title id="tiny-desc">A court seen from behind the near baseline; a ball in flight just in front of the net is detected, and the real frame around it is shown magnified: the ball is about 8 pixels across</title>
               <rect width="640" height="360" rx="18" fill="url(#sky)"/>
               <g class="scene__court scene__court--faint">
                 <path d="M40 340 L400 340 L300 80 L140 80 Z"/>
                 <path d="M86 340 L160 80 M354 340 L280 80 M90 170 L350 170"/>
               </g>
-              <!-- the ball, just in front of the far baseline -->
-              <circle cx="214" cy="90" r="2.5" class="scene__ball"/>
-              <rect class="box box--live box--thin" x="206" y="82" width="16" height="16"/>
-              <path class="scene__leader" d="M222 90 L420 90"/>
+              <!-- the ball, in flight just in front of the net (the line at y=170) -->
+              <circle cx="234" cy="162" r="3.5" class="scene__ball"/>
+              <rect class="box box--live box--thin" x="225" y="153" width="18" height="18"/>
+              <path class="scene__leader" d="M243 162 L420 162"/>
               <!-- magnifier -->
               <g transform="translate(420 60)">
                 <rect width="180" height="180" rx="10" class="scene__map"/>
-                <g class="px">
-                  <rect x="6" y="6" width="28" height="28"/><rect x="34" y="6" width="28" height="28"/><rect x="62" y="6" width="28" height="28" class="px--1"/><rect x="90" y="6" width="28" height="28"/><rect x="118" y="6" width="28" height="28"/><rect x="146" y="6" width="28" height="28" class="px--1"/>
-                  <rect x="6" y="34" width="28" height="28" class="px--1"/><rect x="34" y="34" width="28" height="28"/><rect x="62" y="34" width="28" height="28" class="px--2"/><rect x="90" y="34" width="28" height="28" class="px--2"/><rect x="118" y="34" width="28" height="28"/><rect x="146" y="34" width="28" height="28"/>
-                  <rect x="6" y="62" width="28" height="28"/><rect x="34" y="62" width="28" height="28" class="px--2"/><rect x="62" y="62" width="28" height="28" class="px--3"/><rect x="90" y="62" width="28" height="28" class="px--3"/><rect x="118" y="62" width="28" height="28" class="px--2"/><rect x="146" y="62" width="28" height="28"/>
-                  <rect x="6" y="90" width="28" height="28"/><rect x="34" y="90" width="28" height="28" class="px--2"/><rect x="62" y="90" width="28" height="28" class="px--3"/><rect x="90" y="90" width="28" height="28" class="px--3"/><rect x="118" y="90" width="28" height="28" class="px--2"/><rect x="146" y="90" width="28" height="28" class="px--1"/>
-                  <rect x="6" y="118" width="28" height="28"/><rect x="34" y="118" width="28" height="28"/><rect x="62" y="118" width="28" height="28" class="px--2"/><rect x="90" y="118" width="28" height="28" class="px--2"/><rect x="118" y="118" width="28" height="28"/><rect x="146" y="118" width="28" height="28"/>
-                  <rect x="6" y="146" width="28" height="28" class="px--1"/><rect x="34" y="146" width="28" height="28"/><rect x="62" y="146" width="28" height="28"/><rect x="90" y="146" width="28" height="28" class="px--1"/><rect x="118" y="146" width="28" height="28"/><rect x="146" y="146" width="28" height="28"/>
-                </g>
-                <rect class="box box--live" x="34" y="34" width="112" height="112"/>
-                <g class="tag tag--live" transform="translate(34 2)">
+                <!-- 24x24 px of a real frame around the ball, each pixel enlarged -->
+                <clipPath id="closeup-clip"><rect x="6" y="6" width="168" height="168" rx="6"/></clipPath>
+                <image href="assets/img/tennis-ball-closeup.png" x="6" y="6" width="168" height="168"
+                       clip-path="url(#closeup-clip)" preserveAspectRatio="none" style="image-rendering: pixelated"/>
+                <rect class="box box--live" x="55" y="55" width="84" height="84"/>
+                <g class="tag tag--live" transform="translate(55 23)">
                   <rect width="84" height="32" rx="2"/>
                   <text x="10" y="23">ball</text>
                 </g>
               </g>
               <text class="scene__label" x="510" y="272" text-anchor="middle">A few pixels across</text>
             </svg>
-            <figcaption>A ball at the far baseline, found in the full-resolution frame.</figcaption>
+            <figcaption>A real frame, just in front of the net: the ball is about 8 pixels across. At the far baseline it’s 2 or 3.</figcaption>
           </figure>
         </section>
 

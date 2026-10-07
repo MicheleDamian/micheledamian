@@ -556,11 +556,6 @@ h3 {
 .scene__predict { fill: none; stroke: var(--signal); stroke-width: 2.5; stroke-dasharray: 7 7; }
 .scene__bounce { fill: rgba(255, 214, 10, 0.18); stroke: var(--signal); stroke-width: 2.5; }
 
-.px rect { fill: #1d1d20; }
-.px .px--1 { fill: #29292d; }
-.px .px--2 { fill: #6f7640; }
-.px .px--3 { fill: #c9d65c; }
-
 .box { fill: none; stroke-width: 3; }
 .box--thin { stroke-width: 2; }
 .box--live { stroke: var(--signal); }
