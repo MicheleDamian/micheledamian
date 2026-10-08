@@ -72,6 +72,19 @@ a { color: inherit; text-decoration: none; }
 }
 .skip:focus { top: 12px; }
 
+/* Visually hidden, still announced by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Placeholders you still have to fill in: impossible to miss */
 .ph {
   color: var(--signal);
@@ -437,25 +450,32 @@ h3 {
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
+/* A spec-sheet grid: hairlines between the figures, no heading */
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: clamp(24px, 4vw, 56px);
-  row-gap: clamp(40px, 6vw, 72px);
+  border-top: 1px solid var(--line);
 }
 
+.stat {
+  padding: 30px 28px 34px;
+  border-bottom: 1px solid var(--line);
+}
+.stat:nth-child(3n+1) { padding-left: 0; }
+.stat:not(:nth-child(3n+1)) { border-left: 1px solid var(--line); }
+
 .stat__value {
-  font-size: clamp(3rem, 6.5vw, 5rem);
+  font-size: clamp(2.5rem, 4.6vw, 3.6rem);
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.035em;
 }
 
 .stat__text {
-  margin-top: 14px;
+  margin-top: 12px;
   color: var(--muted);
-  max-width: 19em;
+  font-size: 0.95rem;
+  max-width: 22em;
   text-wrap: pretty;
 }
 
@@ -766,6 +786,9 @@ h3 {
    ========================================================== */
 @media (max-width: 900px) {
   .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(n) { padding-left: 28px; border-left: 0; }
+  .stat:nth-child(2n+1) { padding-left: 0; }
+  .stat:nth-child(2n) { border-left: 1px solid var(--line); }
   .feature { grid-template-columns: 1fr; }
   .feature--flip .feature__text { order: 0; }
 }
@@ -777,6 +800,7 @@ h3 {
   .film__frame { border-radius: 14px; }
 
   .stats { grid-template-columns: 1fr; }
+  .stat:nth-child(n) { padding: 22px 0 24px; border-left: 0; }
 
   .flow__steps { grid-template-columns: 1fr; gap: 36px; }
   .flow__steps::before { display: none; }

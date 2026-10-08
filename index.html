@@ -118,7 +118,7 @@
 
         <!-- Results -->
         <section class="results" aria-labelledby="sa-results">
-          <h3 id="sa-results" class="block-title">The results</h3>
+          <h3 id="sa-results" class="sr-only">Results</h3>
           <ul class="stats">
             <li class="stat">
               <p class="stat__value">94%</p>
@@ -179,13 +179,18 @@
         <!-- Feature: real motion -->
         <section class="feature" aria-labelledby="f-motion">
           <div class="feature__text">
-            <h3 id="f-motion">It notices what moves, not what flickers.</h3>
+            <h3 id="f-motion">It only pays for AI when something happens.</h3>
             <p>
-              Swaying branches, passing headlights, a parked car: the pixels change, but nothing is happening.
-              The camera estimates how fast each object really moves through the scene, from a single
-              uncalibrated lens, and wakes the cloud only when it matters.
+              Sending every frame from every camera to an AI model in the cloud would cost a fortune.
+              So the camera decides first: only the moments when something is really moving go up,
+              about 5% of all frames.
             </p>
-            <p>That’s why 95% of frames never leave the device.</p>
+            <p>
+              Changed pixels alone aren’t enough to go on. A parked car, a passing shadow or headlights
+              sweeping across the yard all change the picture while nothing happens. The camera tracks
+              each object and estimates how fast it actually moves through the scene, from a single
+              uncalibrated lens.
+            </p>
           </div>
           <figure class="feature__visual">
             <svg class="scene" viewBox="0 110 640 250" role="img" aria-labelledby="motion-desc">
@@ -301,7 +306,7 @@
         <!-- Feature: one vehicle across cameras that don't overlap -->
         <section class="feature" aria-labelledby="f-map">
           <div class="feature__text">
-            <h3 id="f-map">Three cameras. One car, not three.</h3>
+            <h3 id="f-map">It recognizes the same car at every gate.</h3>
             <p>
               A family house on a corner, with a camera on each way in: the driveway, the side gate,
               the back gate. Each one watches the house’s own ground, and none of their views overlap.
@@ -386,15 +391,16 @@
         <!-- Feature: chat -->
         <section class="feature feature--flip" aria-labelledby="f-chat">
           <div class="feature__text">
-            <h3 id="f-chat">Ask it. Don’t scrub through footage.</h3>
+            <h3 id="f-chat">Ask it what happened.</h3>
             <p>
-              A question in chat becomes a search of the event history that the AI writes, checks and
-              corrects on its own, then answers in plain English. Every search runs read-only, so a question
-              can never change the data.
+              No more scrolling through hours of video. Ask in chat, in your own words, and get the answer
+              in plain English. Behind it, the AI writes its own search of the event history, checks the
+              results and fixes the search if needed. Searches are read-only, so a question can never change
+              the data.
             </p>
             <p>
-              Alerts work the same way. Describe what you care about in your own words, and every new
-              event is checked against it.
+              Alerts work the same way: describe what you want to know about, and every new event is
+              checked against it.
             </p>
           </div>
           <figure class="feature__visual">
@@ -499,7 +505,7 @@
 
         <!-- Results -->
         <section class="results" aria-labelledby="tr-results">
-          <h3 id="tr-results" class="block-title">The results</h3>
+          <h3 id="tr-results" class="sr-only">Results</h3>
           <ul class="stats">
             <li class="stat">
               <p class="stat__value">5&nbsp;in</p>
