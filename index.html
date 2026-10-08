@@ -223,21 +223,13 @@
                 <circle cx="100" cy="306" r="15" class="scene__wheel"/>
                 <circle cx="198" cy="306" r="15" class="scene__wheel"/>
               </g>
-              <rect class="box box--idle" x="50" y="222" width="196" height="104" rx="2"/>
-              <g class="tag tag--idle" transform="translate(50 190)">
-                <rect width="212" height="32" rx="2"/>
-                <text x="10" y="23">car ID:3 stationary</text>
-              </g>
+              <g class="det det--idle"><path class="det__corners" d="M50 240V222H68M228 222H246V240M246 308V326H228M68 326H50V308"/><g transform="translate(44 194)"><circle class="det__dot" cx="14" cy="13" r="4"/><text class="det__name" x="26" y="18.5">Car<tspan class="det__status"> · stationary</tspan></text><text class="det__id" x="176" y="18.5">3</text></g></g>
 
               <!-- Walking person: trail, then current box -->
               <use href="#walker" x="316" y="208" width="40" height="100" class="scene__ghost" opacity=".18"/>
               <use href="#walker" x="356" y="212" width="42" height="104" class="scene__ghost" opacity=".35"/>
               <use href="#walker" x="402" y="216" width="44" height="108" class="scene__obj"/>
-              <rect class="box box--live" x="392" y="206" width="64" height="126" rx="2"/>
-              <g class="tag tag--live" transform="translate(392 174)">
-                <rect width="212" height="32" rx="2"/>
-                <text x="10" y="23">person ID:4 moving</text>
-              </g>
+              <g class="det det--live"><path class="det__corners" d="M392 220.08V206H406.08M441.92 206H456V220.08M456 317.92V332H441.92M406.08 332H392V317.92"/><g transform="translate(386 178)"><circle class="det__dot" cx="14" cy="13" r="4"/><text class="det__name" x="26" y="18.5">Person<tspan class="det__status"> · moving</tspan></text><text class="det__id" x="170" y="18.5">4</text></g></g>
             </svg>
             <figcaption>The parked car is tracked but never sent. The walking person is.</figcaption>
           </figure>
@@ -272,11 +264,7 @@
               </g>
               <text class="scene__label" x="16" y="32">Camera 1</text>
               <use href="#walker" x="110" y="118" width="40" height="100" class="scene__obj"/>
-              <rect class="box box--live" x="100" y="108" width="60" height="120" rx="2"/>
-              <g class="tag tag--live" transform="translate(100 76)">
-                <rect width="140" height="32" rx="2"/>
-                <text x="10" y="23">person ID:7</text>
-              </g>
+              <g class="det det--live"><path class="det__corners" d="M100 121.2V108H113.2M146.8 108H160V121.2M160 214.8V228H146.8M113.2 228H100V214.8"/><g transform="translate(94 80)"><circle class="det__dot" cx="14" cy="13" r="4"/><text class="det__name" x="26" y="18.5">Person</text><text class="det__id" x="99" y="18.5">7</text></g></g>
 
               <!-- Camera 2 -->
               <rect x="336" y="0" width="304" height="240" rx="14" fill="url(#sky2)"/>
@@ -287,11 +275,7 @@
               </g>
               <text class="scene__label" x="352" y="32">Camera 2</text>
               <use href="#walker" x="468" y="112" width="32" height="80" class="scene__obj"/>
-              <rect class="box box--live" x="460" y="104" width="48" height="96" rx="2"/>
-              <g class="tag tag--live" transform="translate(460 72)">
-                <rect width="140" height="32" rx="2"/>
-                <text x="10" y="23">person ID:7</text>
-              </g>
+              <g class="det det--live"><path class="det__corners" d="M460 114.56V104H470.56M497.44 104H508V114.56M508 189.44V200H497.44M470.56 200H460V189.44"/><g transform="translate(454 76)"><circle class="det__dot" cx="14" cy="13" r="4"/><text class="det__name" x="26" y="18.5">Person</text><text class="det__id" x="99" y="18.5">7</text></g></g>
 
               <!-- Link -->
               <path class="scene__link" d="M130 252 C130 304, 484 304, 484 252"/>
