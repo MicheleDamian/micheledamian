@@ -118,7 +118,7 @@
 
         <!-- Results -->
         <section class="results" aria-labelledby="sa-results">
-          <h3 id="sa-results" class="block-title">The results</h3>
+          <h3 id="sa-results" class="sr-only">Results</h3>
           <ul class="stats">
             <li class="stat">
               <p class="stat__value">94%</p>
@@ -179,13 +179,18 @@
         <!-- Feature: real motion -->
         <section class="feature" aria-labelledby="f-motion">
           <div class="feature__text">
-            <h3 id="f-motion">It notices what moves, not what flickers.</h3>
+            <h3 id="f-motion">It only pays for AI when something happens.</h3>
             <p>
-              Swaying branches, passing headlights, a parked car: the pixels change, but nothing is happening.
-              The camera estimates how fast each object really moves through the scene, from a single
-              uncalibrated lens, and wakes the cloud only when it matters.
+              Sending every frame from every camera to an AI model in the cloud would cost a fortune.
+              So the camera decides first: only the moments when something is really moving go up,
+              about 5% of all frames.
             </p>
-            <p>That’s why 95% of frames never leave the device.</p>
+            <p>
+              Changed pixels alone aren’t enough to go on. A parked car, a passing shadow or headlights
+              sweeping across the yard all change the picture while nothing happens. The camera tracks
+              each object and estimates how fast it actually moves through the scene, from a single
+              uncalibrated lens.
+            </p>
           </div>
           <figure class="feature__visual">
             <svg class="scene" viewBox="0 110 640 250" role="img" aria-labelledby="motion-desc">
@@ -218,21 +223,13 @@
                 <circle cx="100" cy="306" r="15" class="scene__wheel"/>
                 <circle cx="198" cy="306" r="15" class="scene__wheel"/>
               </g>
-              <rect class="box box--idle" x="50" y="222" width="196" height="104" rx="2"/>
-              <g class="tag tag--idle" transform="translate(50 190)">
-                <rect width="212" height="32" rx="2"/>
-                <text x="10" y="23">car ID:3 stationary</text>
-              </g>
+              <g class="det det--idle"><path class="det__corners" d="M50 240V222H68M228 222H246V240M246 308V326H228M68 326H50V308"/><g transform="translate(44 194)"><circle class="det__dot" cx="14" cy="13" r="4"/><text class="det__name" x="26" y="18.5">Car<tspan class="det__status"> · stationary</tspan></text><text class="det__id" x="176" y="18.5">3</text></g></g>
 
               <!-- Walking person: trail, then current box -->
               <use href="#walker" x="316" y="208" width="40" height="100" class="scene__ghost" opacity=".18"/>
               <use href="#walker" x="356" y="212" width="42" height="104" class="scene__ghost" opacity=".35"/>
               <use href="#walker" x="402" y="216" width="44" height="108" class="scene__obj"/>
-              <rect class="box box--live" x="392" y="206" width="64" height="126" rx="2"/>
-              <g class="tag tag--live" transform="translate(392 174)">
-                <rect width="212" height="32" rx="2"/>
-                <text x="10" y="23">person ID:4 moving</text>
-              </g>
+              <g class="det det--live"><path class="det__corners" d="M392 220.08V206H406.08M441.92 206H456V220.08M456 317.92V332H441.92M406.08 332H392V317.92"/><g transform="translate(386 178)"><circle class="det__dot" cx="14" cy="13" r="4"/><text class="det__name" x="26" y="18.5">Person<tspan class="det__status"> · moving</tspan></text><text class="det__id" x="170" y="18.5">4</text></g></g>
             </svg>
             <figcaption>The parked car is tracked but never sent. The walking person is.</figcaption>
           </figure>
@@ -250,7 +247,7 @@
           </div>
           <figure class="feature__visual">
             <svg class="scene" viewBox="0 0 640 330" role="img" aria-labelledby="reid-desc">
-              <title id="reid-desc">The same person seen by camera 1 and then camera 2, keeping the same identity</title>
+              <title id="reid-desc">The same person seen by camera 1 and, one minute later, by camera 2, keeping the same identity</title>
               <defs>
                 <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0" stop-color="#1c1c1e"/>
@@ -265,13 +262,9 @@
                 <line x1="200" y1="120" x2="40" y2="240"/>
                 <line x1="200" y1="120" x2="304" y2="198"/>
               </g>
-              <text class="scene__label" x="16" y="32">Camera 1, 10:41</text>
+              <text class="scene__label" x="16" y="32">Camera 1</text>
               <use href="#walker" x="110" y="118" width="40" height="100" class="scene__obj"/>
-              <rect class="box box--live" x="100" y="108" width="60" height="120" rx="2"/>
-              <g class="tag tag--live" transform="translate(100 76)">
-                <rect width="140" height="32" rx="2"/>
-                <text x="10" y="23">person ID:7</text>
-              </g>
+              <g class="det det--live"><path class="det__corners" d="M100 121.2V108H113.2M146.8 108H160V121.2M160 214.8V228H146.8M113.2 228H100V214.8"/><g transform="translate(94 80)"><circle class="det__dot" cx="14" cy="13" r="4"/><text class="det__name" x="26" y="18.5">Person</text><text class="det__id" x="99" y="18.5">7</text></g></g>
 
               <!-- Camera 2 -->
               <rect x="336" y="0" width="304" height="240" rx="14" fill="url(#sky2)"/>
@@ -280,19 +273,15 @@
                 <line x1="420" y1="104" x2="336" y2="168"/>
                 <line x1="420" y1="104" x2="600" y2="240"/>
               </g>
-              <text class="scene__label" x="352" y="32">Camera 2, 10:42</text>
+              <text class="scene__label" x="352" y="32">Camera 2</text>
               <use href="#walker" x="468" y="112" width="32" height="80" class="scene__obj"/>
-              <rect class="box box--live" x="460" y="104" width="48" height="96" rx="2"/>
-              <g class="tag tag--live" transform="translate(460 72)">
-                <rect width="140" height="32" rx="2"/>
-                <text x="10" y="23">person ID:7</text>
-              </g>
+              <g class="det det--live"><path class="det__corners" d="M460 114.56V104H470.56M497.44 104H508V114.56M508 189.44V200H497.44M470.56 200H460V189.44"/><g transform="translate(454 76)"><circle class="det__dot" cx="14" cy="13" r="4"/><text class="det__name" x="26" y="18.5">Person</text><text class="det__id" x="99" y="18.5">7</text></g></g>
 
               <!-- Link -->
               <path class="scene__link" d="M130 252 C130 304, 484 304, 484 252"/>
-              <g class="pill" transform="translate(172 276)">
-                <rect width="270" height="38" rx="19"/>
-                <text x="135" y="25" text-anchor="middle">Same person, two cameras</text>
+              <g class="pill" transform="translate(152 276)">
+                <rect width="310" height="38" rx="19"/>
+                <text x="155" y="25" text-anchor="middle">Same person, one minute later</text>
               </g>
             </svg>
           </figure>
@@ -301,7 +290,7 @@
         <!-- Feature: one vehicle across cameras that don't overlap -->
         <section class="feature" aria-labelledby="f-map">
           <div class="feature__text">
-            <h3 id="f-map">Three cameras. One car, not three.</h3>
+            <h3 id="f-map">It recognizes the same car at every gate.</h3>
             <p>
               A family house on a corner, with a camera on each way in: the driveway, the side gate,
               the back gate. Each one watches the house’s own ground, and none of their views overlap.
@@ -365,12 +354,9 @@
                     <rect x="-12.5" y="-6.5" width="25" height="13" rx="3.5"/>
                     <path class="map__car-glass" d="M3.5 -5h4v10h-4zM-10 -4.5h3v9h-3z"/>
                   </g>
-                  <rect class="box box--live map__spot" x="-17" y="-17" width="34" height="34"/>
+                  <g class="det det--live map__spot"><path class="det__corners" d="M-17 -9V-17H-9M9 -17H17V-9M17 9V17H9M-9 17H-17V9"/></g>
                 </g>
-                <g class="tag tag--live map__spot map__tag" transform="translate(195 415)">
-                  <rect width="92" height="24" rx="2"/>
-                  <text x="8" y="17">car ID:12</text>
-                </g>
+                <g class="det det--live map__spot map__tag" transform="translate(189 411)"><circle class="det__dot" cx="14" cy="13" r="4"/><text class="det__name" x="26" y="18.5">Car</text><text class="det__id" x="83" y="18.5">12</text></g>
                 <g class="map__scale" transform="translate(428 566)">
                   <rect width="160" height="24" rx="4"/>
                   <text x="10" y="16.5">20 m</text>
@@ -386,15 +372,16 @@
         <!-- Feature: chat -->
         <section class="feature feature--flip" aria-labelledby="f-chat">
           <div class="feature__text">
-            <h3 id="f-chat">Ask it. Don’t scrub through footage.</h3>
+            <h3 id="f-chat">Ask it what happened.</h3>
             <p>
-              A question in chat becomes a search of the event history that the AI writes, checks and
-              corrects on its own, then answers in plain English. Every search runs read-only, so a question
-              can never change the data.
+              No more scrolling through hours of video. Ask in chat, in your own words, and get the answer
+              in plain English. Behind it, the AI writes its own search of the event history, checks the
+              results and fixes the search if needed. Searches are read-only, so a question can never change
+              the data.
             </p>
             <p>
-              Alerts work the same way. Describe what you care about in your own words, and every new
-              event is checked against it.
+              Alerts work the same way: describe what you want to know about, and every new event is
+              checked against it.
             </p>
           </div>
           <figure class="feature__visual">
@@ -499,7 +486,7 @@
 
         <!-- Results -->
         <section class="results" aria-labelledby="tr-results">
-          <h3 id="tr-results" class="block-title">The results</h3>
+          <h3 id="tr-results" class="sr-only">Results</h3>
           <ul class="stats">
             <li class="stat">
               <p class="stat__value">5&nbsp;in</p>
