@@ -80,7 +80,7 @@
       return Math.abs(off) <= f.half;
     };
 
-    const SIZE = 600, BOX = 17, TAG_W = 92, TAG_H = 24;   // match the markup
+    const SIZE = 600, BOX = 17, TAG_W = 93;              // match the markup
     const SPEED = 95;                                    // map units per second
     const PAUSE = 1.2;                                   // seconds off the map between laps
     const total = route.getTotalLength();
@@ -110,9 +110,9 @@
       map.classList.toggle("is-seen", !!seen);
 
       if (seen) {
-        let tx = p.x - BOX, ty = p.y - BOX - TAG_H;
-        if (tx + TAG_W > SIZE - 6) tx = p.x + BOX - TAG_W;
-        if (ty < 6) ty = p.y + BOX;
+        let tx = p.x - BOX - 6, ty = p.y - BOX - 28;      // label floats above the brackets
+        if (tx + TAG_W > SIZE - 6) tx = p.x + BOX + 6 - TAG_W;
+        if (ty < 6) ty = p.y + BOX + 4;
         tag.setAttribute("transform", `translate(${tx.toFixed(1)} ${ty.toFixed(1)})`);
       }
 

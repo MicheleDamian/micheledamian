@@ -648,7 +648,8 @@ h3 {
 /* tracking box and tag: only while a camera sees the car */
 .map__spot { opacity: 0; transition: opacity 0.15s; }
 .map.is-seen .map__spot { opacity: 1; }
-.map .tag text { font-size: 15px; }
+/* on the busy map, a dark halo keeps the floating label readable over roads and place names */
+.map .det__name, .map .det__id, .map .det__dot { paint-order: stroke; stroke: #141416; stroke-width: 5px; stroke-linejoin: round; }
 
 .map__scale rect { fill: rgba(0, 0, 0, 0.7); }
 .map__scale text { fill: var(--muted); font-size: 12px; font-weight: 600; }
