@@ -106,7 +106,7 @@
           </div>
 
           <figcaption class="film__caption">
-            <p class="film__title">What the demo shows <span class="film__note">Camera&nbsp;1 left, camera&nbsp;2 right, chat in the middle, looping</span></p>
+            <p class="film__title">What the demo shows <span class="film__note">Camera&nbsp;1 left, camera&nbsp;2 right, chat in the middle</span></p>
             <ol class="chapters">
               <li>A man crosses camera&nbsp;2, then camera&nbsp;1. Each camera picks him up and tracks him.</li>
               <li>In chat: “have you seen anybody in the last couple of minutes?” The answer describes the two people seen, with what they wore, where and when.</li>
@@ -487,7 +487,7 @@
           </div>
 
           <figcaption class="film__caption">
-            <p class="film__title">What the demo shows <span class="film__note">Half speed, looping</span></p>
+            <p class="film__title">What the demo shows <span class="film__note">Half speed</span></p>
             <ol class="chapters">
               <li>A shot comes over the net, and the ball is found in the first frames it appears in (yellow ring).</li>
               <li>The filtered track places it in 3D: the blue marker is the spot on the court right under the ball, the line its height.</li>
@@ -541,7 +541,7 @@
             <p>
               Put the camera anywhere behind the baseline and, in about two seconds, it works out on its
               own exactly where it is, which way it points and how its lens bends the image. No
-              calibration target, no measuring, nobody on court.
+              calibration checkerboard, no measuring, nobody on court.
             </p>
             <p>
               The court is the calibration target. A detector finds where the lines meet, the known
@@ -550,8 +550,8 @@
             </p>
           </div>
           <figure class="feature__visual">
-            <img class="shot" src="assets/img/tennis-court-keypoints.jpg" width="1280" height="720" loading="lazy"
-                 alt="Feature map from the court detector: bright spots where the court lines meet, each with a green dot where the fitted court geometry places that corner">
+            <img class="shot" src="assets/img/tennis-court-keypoints.jpg" width="1720" height="480" loading="lazy"
+                 alt="The court seen from behind the near baseline, faded: white glows where the court detector found the lines meeting, each with a green dot where the fitted court geometry places that corner">
             <figcaption>White: corners the detector found. Green: where the court’s geometry puts them.</figcaption>
           </figure>
         </section>
@@ -561,51 +561,42 @@
           <div class="feature__text">
             <h3 id="f-tiny">It finds a ball a few pixels wide.</h3>
             <p>
-              At the far baseline a tennis ball is a smudge, and general-purpose detectors lose it.
-              A detector built for this one job finds it faster and more reliably than YOLO.
+              At the far baseline a tennis ball is two or three pixels wide, and general-purpose
+              detectors lose it. Shrinking the frame to suit them would erase it altogether.
             </p>
             <p>
-              When several spots look like a ball, the tracker keeps each possibility open until
-              the laws of motion rule out all but one.
+              A detector built for this one job works on the full 1080p frame and finds the ball
+              anywhere on the court, from the net to the far baseline, 20 times faster than YOLOv5.
             </p>
           </div>
           <figure class="feature__visual">
             <svg class="scene" viewBox="0 0 640 360" role="img" aria-labelledby="tiny-desc">
-              <title id="tiny-desc">A court with three ball-like candidates; the real ball is confirmed and shown magnified, a few pixels across</title>
+              <title id="tiny-desc">A court seen from behind the near baseline; a ball in flight just in front of the net is detected, and the real frame around it is shown magnified: the ball is about 8 pixels across</title>
               <rect width="640" height="360" rx="18" fill="url(#sky)"/>
               <g class="scene__court scene__court--faint">
                 <path d="M40 340 L400 340 L300 80 L140 80 Z"/>
                 <path d="M86 340 L160 80 M354 340 L280 80 M90 170 L350 170"/>
               </g>
-              <!-- look-alikes, ruled out -->
-              <circle cx="118" cy="120" r="3" class="scene__decoy"/>
-              <rect class="box box--idle box--thin" x="110" y="112" width="16" height="16"/>
-              <circle cx="330" cy="262" r="3" class="scene__decoy"/>
-              <rect class="box box--idle box--thin" x="322" y="254" width="16" height="16"/>
-              <!-- the ball -->
-              <circle cx="232" cy="150" r="3.5" class="scene__ball"/>
-              <rect class="box box--live box--thin" x="223" y="141" width="18" height="18"/>
-              <path class="scene__leader" d="M241 150 L420 150"/>
+              <!-- the ball, in flight just in front of the net (the line at y=170) -->
+              <circle cx="234" cy="162" r="3.5" class="scene__ball"/>
+              <rect class="box box--live box--thin" x="225" y="153" width="18" height="18"/>
+              <path class="scene__leader" d="M243 162 L420 162"/>
               <!-- magnifier -->
               <g transform="translate(420 60)">
                 <rect width="180" height="180" rx="10" class="scene__map"/>
-                <g class="px">
-                  <rect x="6" y="6" width="28" height="28"/><rect x="34" y="6" width="28" height="28"/><rect x="62" y="6" width="28" height="28" class="px--1"/><rect x="90" y="6" width="28" height="28"/><rect x="118" y="6" width="28" height="28"/><rect x="146" y="6" width="28" height="28" class="px--1"/>
-                  <rect x="6" y="34" width="28" height="28" class="px--1"/><rect x="34" y="34" width="28" height="28"/><rect x="62" y="34" width="28" height="28" class="px--2"/><rect x="90" y="34" width="28" height="28" class="px--2"/><rect x="118" y="34" width="28" height="28"/><rect x="146" y="34" width="28" height="28"/>
-                  <rect x="6" y="62" width="28" height="28"/><rect x="34" y="62" width="28" height="28" class="px--2"/><rect x="62" y="62" width="28" height="28" class="px--3"/><rect x="90" y="62" width="28" height="28" class="px--3"/><rect x="118" y="62" width="28" height="28" class="px--2"/><rect x="146" y="62" width="28" height="28"/>
-                  <rect x="6" y="90" width="28" height="28"/><rect x="34" y="90" width="28" height="28" class="px--2"/><rect x="62" y="90" width="28" height="28" class="px--3"/><rect x="90" y="90" width="28" height="28" class="px--3"/><rect x="118" y="90" width="28" height="28" class="px--2"/><rect x="146" y="90" width="28" height="28" class="px--1"/>
-                  <rect x="6" y="118" width="28" height="28"/><rect x="34" y="118" width="28" height="28"/><rect x="62" y="118" width="28" height="28" class="px--2"/><rect x="90" y="118" width="28" height="28" class="px--2"/><rect x="118" y="118" width="28" height="28"/><rect x="146" y="118" width="28" height="28"/>
-                  <rect x="6" y="146" width="28" height="28" class="px--1"/><rect x="34" y="146" width="28" height="28"/><rect x="62" y="146" width="28" height="28"/><rect x="90" y="146" width="28" height="28" class="px--1"/><rect x="118" y="146" width="28" height="28"/><rect x="146" y="146" width="28" height="28"/>
-                </g>
-                <rect class="box box--live" x="34" y="34" width="112" height="112"/>
-                <g class="tag tag--live" transform="translate(34 2)">
+                <!-- 24x24 px of a real frame around the ball, each pixel enlarged -->
+                <clipPath id="closeup-clip"><rect x="6" y="6" width="168" height="168" rx="6"/></clipPath>
+                <image href="assets/img/tennis-ball-closeup.png" x="6" y="6" width="168" height="168"
+                       clip-path="url(#closeup-clip)" preserveAspectRatio="none" style="image-rendering: pixelated"/>
+                <rect class="box box--live" x="55" y="55" width="84" height="84"/>
+                <g class="tag tag--live" transform="translate(55 23)">
                   <rect width="84" height="32" rx="2"/>
                   <text x="10" y="23">ball</text>
                 </g>
               </g>
               <text class="scene__label" x="510" y="272" text-anchor="middle">A few pixels across</text>
             </svg>
-            <figcaption>Three candidates, one ball. The other two don’t move like one.</figcaption>
+            <figcaption>A real frame, just in front of the net: the ball is about 8 pixels across. At the far baseline it’s 2 or 3.</figcaption>
           </figure>
         </section>
 
@@ -650,6 +641,65 @@
               </g>
             </svg>
             <figcaption>Solid: where the ball has been. Dashed: where it will land.</figcaption>
+          </figure>
+        </section>
+
+        <!-- Feature: which ball is in play -->
+        <section class="feature feature--flip" aria-labelledby="f-inplay">
+          <div class="feature__text">
+            <h3 id="f-inplay">It knows which ball is in play.</h3>
+            <p>
+              A practice court is never down to one ball. Some roll back after bouncing off the fence,
+              some drift in from the next court. A detector finds every one of them, and on its own it
+              can’t tell which one matters.
+            </p>
+            <p>
+              Each ball is tracked in 3D, with its position and its velocity. A ball that stays close to
+              the ground is rolling, and is set aside. The ball in play is the one in the air.
+            </p>
+          </div>
+          <figure class="feature__visual">
+            <svg class="scene" viewBox="0 0 640 360" role="img" aria-labelledby="inplay-desc">
+              <title id="inplay-desc">Three balls on a court: one in the air, marked in play, with a line down to the court showing its height; two rolling along the ground, marked rolling</title>
+              <rect width="640" height="360" rx="18" fill="url(#sky)"/>
+              <g class="scene__court">
+                <path d="M70 330 L570 330 L420 120 L220 120 Z"/>
+                <path d="M132 330 L245 120 M508 330 L395 120"/>
+                <path d="M229 150 L411 150 M173 255 L467 255 M320 150 L320 255"/>
+              </g>
+              <path class="scene__net" d="M160 183 L480 183"/>
+
+              <!-- rolling balls: on the ground, with a short streak behind -->
+              <path class="scene__roll" d="M150 300 L190 296"/>
+              <circle cx="196" cy="295" r="5" class="scene__ball"/>
+              <rect class="box box--idle box--thin" x="186" y="285" width="20" height="20"/>
+              <g class="tag tag--idle" transform="translate(186 253)">
+                <rect width="96" height="32" rx="2"/>
+                <text x="10" y="23">rolling</text>
+              </g>
+              <path class="scene__roll" d="M512 236 L478 233"/>
+              <circle cx="472" cy="232" r="4.5" class="scene__ball"/>
+              <rect class="box box--idle box--thin" x="462" y="222" width="20" height="20"/>
+              <g class="tag tag--idle" transform="translate(462 190)">
+                <rect width="96" height="32" rx="2"/>
+                <text x="10" y="23">rolling</text>
+              </g>
+
+              <!-- the ball in play: in the air, with its height down to the court -->
+              <circle cx="300" cy="62" r="3.6" class="scene__ball" opacity=".35"/>
+              <circle cx="312" cy="70" r="4" class="scene__ball" opacity=".55"/>
+              <circle cx="324" cy="82" r="4.4" class="scene__ball" opacity=".8"/>
+              <path class="scene__leader" d="M338 97 L338 226"/>
+              <ellipse cx="338" cy="228" rx="14" ry="5" class="scene__bounce"/>
+              <circle cx="338" cy="97" r="5" class="scene__ball"/>
+              <rect class="box box--live box--thin" x="328" y="87" width="20" height="20"/>
+              <g class="tag tag--live" transform="translate(328 55)">
+                <rect width="98" height="32" rx="2"/>
+                <text x="10" y="23">in play</text>
+              </g>
+              <text class="scene__label" x="350" y="214">height</text>
+            </svg>
+            <figcaption>Low and rolling: set aside. In the air: the ball in play.</figcaption>
           </figure>
         </section>
 

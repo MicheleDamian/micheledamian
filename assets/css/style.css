@@ -550,16 +550,11 @@ h3 {
 .scene__court--faint path { stroke: rgba(255, 255, 255, 0.1); }
 .scene__net { fill: none; stroke: rgba(255, 255, 255, 0.45); stroke-width: 4; }
 .scene__ball { fill: #c9d65c; }            /* optic yellow-green, distinct from the box colour */
-.scene__decoy { fill: #5a5a5e; }
+.scene__roll { fill: none; stroke: rgba(201, 214, 92, 0.35); stroke-width: 3; stroke-linecap: round; }
 .scene__map { fill: rgba(0, 0, 0, 0.78); stroke: var(--line); stroke-width: 1.5; }
 .scene__leader { stroke: var(--signal); stroke-width: 1.5; stroke-dasharray: 4 5; opacity: 0.7; }
 .scene__predict { fill: none; stroke: var(--signal); stroke-width: 2.5; stroke-dasharray: 7 7; }
 .scene__bounce { fill: rgba(255, 214, 10, 0.18); stroke: var(--signal); stroke-width: 2.5; }
-
-.px rect { fill: #1d1d20; }
-.px .px--1 { fill: #29292d; }
-.px .px--2 { fill: #6f7640; }
-.px .px--3 { fill: #c9d65c; }
 
 .box { fill: none; stroke-width: 3; }
 .box--thin { stroke-width: 2; }
