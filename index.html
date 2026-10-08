@@ -20,7 +20,13 @@
 
   <meta name="theme-color" content="#000000">
   <meta name="color-scheme" content="dark">
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <!-- Icons: favicon.ico (16/32/48) for older browsers, icon.svg for modern ones, apple-touch-icon
+       for iPhone/iPad home screens, the manifest for Android. sizes="32x32" on the ICO stops Chrome
+       from choosing it over the SVG. All in the site's root folder. -->
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="assets/css/style.css">
 
   <!-- Umami analytics (cookieless). The website ID is public by design: every visitor
